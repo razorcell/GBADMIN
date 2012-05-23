@@ -1,0 +1,101 @@
+<form action="#">
+	<div class="section alphaonly">
+		<label>Client<small>Text custom</small></label>
+		<div>
+			<input name="text[]" type="text" class="medium" maxlength="20"
+				value="khalifa  rmili" readonly="readonly">
+		</div>
+	</div>
+
+	<div class="section alphaonly">
+		<label>Description<small>Text custom</small></label>
+		<div>
+			<textarea name="description" readonly="readonly">Ceci est une description d'un rpojet</textarea>
+		</div>
+	</div>
+
+	<div class="section">
+		<label>Prix </label>
+		<div>
+			<input type="text" id="sCur" value="10" readonly="readonly" />
+		</div>
+	</div>
+
+
+
+	<div class="section alphaonly">
+		<label>Date debut<small>La date de debut du projet</small></label>
+		<div>
+			<input name="d_d" type="text" class="medium" value="12/05/2012"
+				readonly="readonly">
+		</div>
+	</div>
+
+	<div class="section alphaonly">
+		<label>Date fin<small>La date prevu pour la fin du projet</small></label>
+		<div>
+			<input name="d_f" type="text" class="medium" value="12/06/2012"
+				DISABLED>
+		</div>
+	</div>
+
+	<div class="section">
+		<label>Status<small>Veuillez definir un status initial pour ce projet</small></label>
+		<div>
+			<input type="checkbox" id="preOrder" name="preOrder" class="preOrder"
+				value="1" /> <span class="f_help"></span>
+		</div>
+	</div>
+
+	<div class="section">
+		<label>Progression</label>
+		<div>
+			<div id="slider-range-min"></div>
+			<span class="f_help">Slider-range-min </span>
+		</div>
+	</div>
+<div class="boxtitle min">
+                         
+                         
+                           <div class="boxtitle min"><h4>Les Commentaires du Projet</h4></div> 
+
+							<div class="userOnline">
+							<ul>
+								<li ><a class="statusOnline">Sarah</a></li>
+								<li class="selected"><a class="statusOffline">John Doe</a></li>
+								<li ><a class="statusOnline">Alex (you)</a></li>
+								<li ><a class="statusOnline">Aumaim</a></li>
+								<li ><a class="statusOffline">Zicedemo</a></li>
+							</ul>
+							</div>
+
+                            <div class="comment">
+								<div>
+                                	<div class="avartar"><img src="images/avartarB.jpg"  alt="avartar" /></div>
+                                    <div class="msg">
+									  <span><b>John Doe</b> said :</span><span>2 hrs ago</span>     
+                                   	  <div class="bodyMsg">I am a superhero, and I like this ! Nice work.</div>
+									  <div class="toolMsg"></span></div>
+                                    </div>
+								</div>                   
+							<div>
+                                	<div class="avartar"><img src="images/avartar2.png"  alt="avartar" /></div>
+                                    <div class="msg">
+									  <span><b>Alex (you) </b> said :</span><span>few seconds ago</span>     
+                                   	  <div class="bodyMsg">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+									</div>
+								</div>
+
+                            <!-- clear fix -->
+							<div class="clear"></div>
+
+                                <div class="commentMsg">
+                                <form class="newComment">
+                               	  <textarea placeholder="Add a comment or a reply here ..."></textarea>
+                                    <div><a class="uibutton">Ajouter le commentaire</a></div>
+                                </form>
+                                </div>
+
+                            </div>
+
+</form>

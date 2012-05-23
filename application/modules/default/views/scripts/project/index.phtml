@@ -1,0 +1,89 @@
+<script type="text/javascript"
+	src="<?php echo $this->baseUrl('js/projet.js');?>"></script>
+
+<h5 class="test"></h5>
+
+<a class="button green morph"
+	href="<?php echo $this->url(array('controller' => 'project', 'action' => 'add' ),'default',true);?>">+
+	Ajouter</a>
+
+<a class="delete_b button pink morph">- Supprimer</a>
+<a class="selectall button blue morph">De/Selectionner tous</a>
+
+<?php
+$i = 0;
+echo '
+<div id="UITab">
+
+<div class="tab_container">
+
+<div id="tab1" class="tab_content">
+<div class="load_page">
+
+<form>
+<div class="tableName inTab">
+<h3 id="test"></h3>
+<table class="display data_table2 projet"  id="data_table3">
+<thead>
+<tr>
+
+<th align="left">Id</th>
+<th>Date debut</th>
+<th>Date fin</th>
+<th>Status</th>
+<th>Paiement</th>
+<th>Type de projet</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>';
+
+foreach ( $this->list_projets as $projet ) {
+	
+	echo '<tr>
+	<td  class="id_projet" align ="left">' . $projet ['id_projet'] . '</td>';
+	
+		echo '<td class="date_debut">' . $projet ['date_debut'] . '</td>
+		<td class="date_fin">' . $projet ['date_fin'] . '</td>
+		<td class="status">' . $projet ['status'] . '</td>
+		<td class="paiement">' . $projet ['paye'] . '</td>';
+		$type_projet_string = NULL;
+		foreach ($this->list_types_projets as $type_projet){
+			if($type_projet['id_type_projet'] == $projet['id_type_projet']){
+				$type_projet_string = $type_projet['nom_type_projet'];
+			}
+		}
+		echo '<td>' . $type_projet_string. '</td>';
+		echo '
+		<td>
+		<span class="tip" >
+		<a  title="Edit" class="edit" href="';
+		echo $this->url ( array ('id' => $projet ['id_projet'] ), 'projetmodify' );
+		echo '">
+		<img src="images/icon/icon_edit.png" >
+		</a>
+		</span>
+		<span class="tip" >
+		<a id="' . $i . '" class="Delete"  name="Band ring" title="Delete">
+		<img src="images/icon/icon_delete.png">
+		</a>
+		</span>
+		</td>
+		</tr>';
+		$i ++;
+
+}
+
+echo '</tbody>
+</table>
+</div>
+</form>
+</div>
+</div><!--tab1-->
+
+</div>
+</div><!-- End UITab -->
+<!-- clear fix -->
+<div class="clear"></div>
+';
+?>

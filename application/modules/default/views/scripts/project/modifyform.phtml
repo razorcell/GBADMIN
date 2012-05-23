@@ -1,0 +1,192 @@
+<script type="text/javascript"
+	src="<?php echo $this->baseUrl('js/projet.js');?>"></script>
+<script type="text/javascript"
+	src="<?php echo $this->baseUrl('js/sliders.js');?>"></script>
+<link rel="stylesheet" type="text/css"
+	href="<?php echo $this->baseUrl('css/styles.css');?>" />
+<script type="text/javascript">
+<!--
+$(document).ready(function(){
+	var progression = $('a.progression').attr('value');
+	var slider_level = 188-(188*progression/100)+'px'; 
+	var chart_level = (188*progression/100)+'px';
+	$('a.progression').attr('value',progression);
+	$('div.slider-handle').css({'top':slider_level});
+	$('div.cu-mid').css({'height':chart_level});
+
+});
+</script>
+
+<?php 
+echo  '<form id="add_projet" class="f_p_modify">';
+echo '<div class="section">
+		<label> Id <small></small></label>
+		<div>
+			<input disabled="disabled" id="id" name="id" type="text" class="validate[required] medium id_projet" maxlength="20" value="' . $this->projet->id_projet . '">
+		</div>
+	</div>
+<div class="section commande">
+<label>Commande<small>La commande à laquel ce projet appartient</small></label>
+<div>
+<select data-placeholder="'.$this->projet->id_commande.'"
+class="chzn-select" tabindex="2">
+<option value=""></option>';
+foreach($this->list_commandes as $commande){
+	echo "<option value=".$commande['id_commande'].">".$commande['id_commande']."</option>";
+}
+echo '</select><span class="f_help">Veuillez choisir un client</span>
+</div>
+</div>';
+//type de service
+$type_projet_string = NULL;
+foreach($this->list_types_projets as $type_projet){
+	if($type_projet['id_type_projet'] == $this->projet->id_type_projet){
+		$type_projet_string = $type_projet['nom_type_projet'];
+	}
+}
+echo '<div class="section type_projet">
+<label>Type de projet<small>Définir le type de ce projet</small></label>
+<div>
+<select data-placeholder="'.$type_projet_string.'"
+class="chzn-select " tabindex="2">
+<option value=""></option>';
+foreach($this->list_types_projets as $type_projet){
+	echo "<option value=".$type_projet['nom_type_projet'].">".$type_projet['nom_type_projet']."</option>";
+}
+echo '</select><span class="f_help">Veuillez choisir un type de projet</span>
+</div>
+</div>';
+
+echo '
+<div class="section">
+		<label>Date debut</label>
+		<div>
+			<input type="text" id="datepick" class="datepicker date_debut"
+				readonly="readonly" name="date_debut" value="'.$this->projet->date_debut.'"/>
+		</div>
+	</div>
+
+	<div class="section">
+		<label>Date fin</label>
+		<div>
+			<input type="text" id="datepick2" class="datepicker date_fin"
+				readonly="readonly" name="date_fin" value="'.$this->projet->date_fin.'"/>
+		</div>
+	</div>
+	<div class="section alphaonly">
+		<label>Description<small>Un petit mot sur le projet</small></label>
+		<div>
+			<textarea name="description">'.$this->projet->description.'</textarea>
+		</div>
+	</div>
+	<div class="section">
+		<label>Status<small>Veuillez definir un status initial pour ce projet</small></label>
+		<div>
+			<input type="checkbox" id="status" name="status" class="status"
+				value="1" ';
+if($this->projet->status == 'Actif'){
+	echo 'checked="checked"';
+}
+			echo' > <span class="f_help"></span>
+				<input value="'.$this->projet->status.'" type="hidden" id="status_hidden" name="status_hidden" class="status_hidden">
+		</div>
+	</div>
+	<div class="section">
+		<label>Paiement<small>Si le client à payer ou non pour ce projet</small></label>
+		<div>
+			<input type="checkbox" id="paye" name="paye" class="paye"
+				value="1" ';
+if($this->projet->paye == 'Oui'){
+	echo 'checked="checked"';
+}
+			echo' > <span class="f_help"></span>
+				<input value="'.$this->projet->paye.'" type="hidden" id="paye_hidden" name="paye_hidden" class="paye_hidden" />
+		</div>
+	</div>';
+	// affichage des employe
+echo '<div class="section">
+		<label> Employés courrant <small>les employes actuellement intervenu dans ce projet</small></label>
+		<div>
+			<ul>';
+if(count(($this->projet_employes))>0)//compter le nombre d'occupation de cette employé
+{
+	foreach ( $this->projet_employes as $projet_employe ) {
+		foreach ( $this->list_employes as $employe ) {
+			if ($projet_employe ['id_employe'] == $employe ['id_employe']) {
+				echo '<li ><em><strong>' . $employe ['nom'] . '</strong></em></li>';
+			}
+		}
+	
+	}
+}else{
+	echo '<li ><em><strong>Aucun employe ne travail sur ce projet </strong></em></li>';
+}
+echo '<br/>';
+
+echo '</ul>
+		</div>
+	</div>';
+
+echo '	
+	<div class="section">
+		<label> Nouvelle liste d\'employe <small>utilisez cette solution pour définir de nouveau employés pour ce projet </small></label>
+		<div>
+			<select class="chzn-select" multiple tabindex="4">
+				<option value=""></option>';
+foreach ( $this->list_employes as $employe ) {
+	echo "<option value=" . $employe ['nom'] . ">" . $employe ['nom']. "</option>";
+}
+
+echo '	</select>
+		</div>
+	</div>';
+
+echo '	<div class="section">
+     <label>Prix<small>Donner un prix</small></label>
+         <div>
+             <input type="text" id="sStep" value="'.$this->projet->prix.'" name="prix" class="prix_projet"/>
+           </div>
+     </div>
+	<div class="section">
+		<label>Progression<small>Vous pouvez définir une progression pour votre projet</small></label>
+		<div style="font-size:2em ; margin :10 10 20 10" ><a class="uibutton normal progression" value="'.$this->projet->progression.'">'.$this->projet->progression.'%</a></div>
+		<div>
+	<div class="main">
+
+    <!-- The sliders -->
+    
+    <div class="colorful-slider blue">
+    <div class="slider-handle"></div>
+    </div>
+
+    <div class="cube-area">
+    
+        <!-- The colorful bars -->
+        
+        <div class="cuboid blue">
+        <div class="cu-top"></div>
+        <div class="cu-mid"></div>
+        <div class="cu-bottom"></div>
+        </div>
+      
+        <!-- The perspective div is CSS3 transformed -->
+        
+        <div class="perspective">
+        </div>
+    </div>
+    
+    <!-- Old school float clearing -->
+    <div class="clear"></div>
+</div>
+</div>
+<br><br>
+</div>
+
+	<div class="section last">
+		<div>
+			<a class="button green morph modify_projet">Appliquer les changements</a> 
+		</div>
+	</div>
+
+</form>';
+?>

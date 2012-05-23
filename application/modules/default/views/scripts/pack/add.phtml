@@ -1,0 +1,35 @@
+
+<script type="text/javascript"
+	src="<?php echo $this->baseUrl('js/pack.js');?>"></script>
+
+<?php 
+echo '
+<form id="validation" class="f_p_add">';
+
+echo '<div class="section">
+	<label>Type de service<small>Veuillez choisir un type de service pour ce nouveau pack</small></label>
+	<div>
+	<select data-placeholder="Veuillez choisir un type de service..."
+	class="chzn-select" tabindex="2">
+	<option value=""></option>';
+foreach($this->list_types_services as $type_service){
+	echo "<option value=".$type_service['nom_type_service'].">".$type_service['libelle_type_service']."</option>";
+}
+echo '</select><span class="f_help">Veuillez choisir un type de services</span>
+	</div>
+	</div>';
+	echo '<div class="section textonly">
+		<label> libellé du pack <small>Donner un libellé pour ce pack</small></label>
+		<div>
+			<input id="f_required" name="nom_pack" type="text"
+				class="validate[required] medium nom_pack">
+		</div>
+	</div>
+	<div class="section last">
+		<div>
+			<a class="button green morph add_pack">Ajouter</a> 
+		</div>
+	</div>
+	
+</form>';
+?>

@@ -1,0 +1,315 @@
+<script type="text/javascript"
+	src="<?php echo $this->baseUrl('js/commande.js');?>"></script>
+<script type="text/javascript"
+	src="<?php echo $this->baseUrl('js/commande_service.js');?>"></script>
+<script type="text/javascript"
+	src="<?php echo $this->baseUrl('js/projet.js');?>"></script>
+	<script type="text/javascript"
+	src="<?php echo $this->baseUrl('js/sliders.js');?>"></script>
+<link rel="stylesheet" type="text/css"
+	href="<?php echo $this->baseUrl('css/styles.css');?>" />
+	<script type="text/javascript">
+<!--
+$(document).ready(function(){
+	$('a.progression').html('0');
+	$('a.progression').attr('value','0');
+	$('div.slider-handle').css({'top':'188px'});
+	$('div.cu-mid').css({'height':'0px'});
+});
+//-->
+</script>
+<style>
+.hidden_class{
+	display:none;
+}
+#feedback {
+	font-size: 0.1em;
+}
+
+#selectable {
+	column-count: 2;
+}
+
+#selectable .ui-selecting {
+	background: #1F92FF;
+}
+
+#selectable .ui-selected {
+	background: #1F92FF;
+	color: white;
+}
+
+.list_packs {
+	width: 345px;
+}
+
+.pack_item {
+	margin: 8px;
+	padding: 0.4em;
+	font-size: 1.4em;
+	height: 18px;
+}
+</style>
+
+<?php
+
+echo '
+<div class="widget" style="border:0px">
+<form style="margin:20px">
+<input value="add" type="hidden" id="type_form" name="type_form" class="type_form">
+	<div class="section numericonly id_commande" style="display:none">
+					<label> Id <small></small></label>
+					<div>
+						<input id="id_commande" name="id_commande" type="text"
+							class="validate[required] small" maxlength="30" readonly>
+					</div>
+				</div>
+<div class="section numericonly hidden_class">
+					<label>Request_type<small>Text custom</small></label>
+					<div>
+						<input  id="request_type" name="request_type" type="hidden"
+							class="validate[required] small request_type" maxlength="20" value="projet">
+					</div>
+				</div>';
+
+echo '<div class="section client">
+<label>Client<small>Veuillez choisir le client qui a fait cette commande</small></label>
+<div>
+<select data-placeholder="Veuillez choisir un client..."
+class="chzn-select " tabindex="2">
+<option value=""></option>';
+foreach ( $this->list_clients as $client ) {
+	if ($client ['type'] == 'Entreprise') {
+		echo "<option value=" . $client ['societe'] . ">" . $client ['societe'] . "</option>";
+	} else {
+		echo "<option value=" . $client ['nom'] . ">" . $client ['nom'] . "</option>";
+	}
+}
+echo '</select><span class="f_help">Veuillez choisir un type de projet</span>
+</div>
+</div>
+<div class="section alphaonly commande_description">
+		<label>Description de la commande<small>Description de la commande</small></label>
+		<div>
+			<textarea class="description_commande" name="description_commande"></textarea>
+		</div>
+	</div>';
+
+echo '<div class="section">
+		<label>Type d\'article<small>Veuillez definir le contenu de cette commande</small></label>
+		<div>
+			<input type="checkbox" id="show_service" name="type" class="type"
+				value="1" /><span class="f_help"></span>
+		</div>
+	</div>
+	</form>
+</div>
+
+<div class="widget" style="padding:20px ;border:0px">';
+
+echo '<form id="add_projet" class="formEl_b f_p_add">
+<fieldset>
+				<legend>
+					Projet <span class="small s_color"></span>
+				</legend>';
+
+echo '<div class="section type_projet">
+<label>Type de projet<small>Définir le type de ce projet</small></label>
+<div>
+<select data-placeholder="Veuillez choisir un type de projet..."
+class="chzn-select " tabindex="2">
+<option value=""></option>';
+foreach ( $this->list_types_projets as $type_projet ) {
+	echo "<option value=" . $type_projet ['nom_type_projet'] . ">" . $type_projet ['nom_type_projet'] . "</option>";
+}
+echo '</select><span class="f_help">Veuillez choisir un type de projet</span>
+</div>
+</div>';
+
+echo '
+	
+	
+	<div class="section">
+		<label>Date debut</label>
+		<div>
+			<input type="text" id="datepick" class="datepicker date_debut"
+				readonly="readonly" name="date_debut" />
+		</div>
+	</div>
+
+	<div class="section">
+		<label>Date fin</label>
+		<div>
+			<input type="text" id="datepick2" class="datepicker date_fin"
+				readonly="readonly" name="date_fin" />
+		</div>
+	</div>
+<div class="section alphaonly">
+		<label>Description<small>Un petit mot sur le projet</small></label>
+		<div>
+			<textarea name="description_projet"></textarea>
+		</div>
+	</div>
+	<div class="section">
+		<label>Status<small>Veuillez definir un status initial pour ce projet</small></label>
+		<div>
+			<input type="checkbox" id="status" name="status" class="status"
+				value="1" /> <span class="f_help"></span>
+				<input value="interrompu" type="hidden" id="status_hidden" name="status_hidden" class="status_hidden"
+				value="" />
+		</div>
+	</div>
+<div class="section">
+		<label>Paiement<small>Si le client à payer ou non pour ce projet</small></label>
+		<div>
+			<input type="checkbox" id="paye" name="paye" class="paye"
+				value="1" /> <span class="f_help"></span>
+				<input value="Non" type="hidden" id="paye_hidden" name="paye_hidden" class="paye_hidden" />
+		</div>
+	</div>
+<div class="section">
+     <label>Prix<small>Donner un prix</small></label>
+         <div>
+             <input type="text" id="sStep" value="1000.00" name="prix_projet" class="prix_projet"/>
+           </div>
+     </div>';
+echo '	
+	<div class="section">
+		<label> Employe <small>Définir la liste des employés qui travaillent dans ce projet</small></label>
+		<div>
+			<select class="chzn-select emplyes" multiple tabindex="4">
+				<option value=""></option>';
+foreach ( $this->list_employes as $employe ) {
+	echo "<option value=" . $employe ['nom'] . ">" . $employe ['nom'] . "</option>";
+}
+
+echo '	</select>
+		</div>
+	</div>
+	<div class="section">
+		<label>Progression<small>Vous pouvez définir une progression pour votre projet</small></label>
+		<div style="font-size:2em ; margin :10 10 20 10"><a class="uibutton normal progression" value="79">79%</a></div>
+		<div>
+	<div class="main">
+
+    <!-- The sliders -->
+    
+    <div class="colorful-slider blue">
+    <div class="slider-handle ui-draggable" style="top: 40px;"></div>
+    </div>
+
+    <div class="cube-area">
+    
+        <!-- The colorful bars -->
+        
+        <div class="cuboid blue">
+        <div class="cu-top"></div>
+        <div class="cu-mid" style="height: 148px;"></div>
+        <div class="cu-bottom"></div>
+        </div>
+      
+        <!-- The perspective div is CSS3 transformed -->
+        
+        <div class="perspective">
+        </div>
+    </div>
+    
+    <!-- Old school float clearing -->
+    <div class="clear"></div>
+</div>
+</div>
+<br><br>
+</div>
+	
+	<div class="section last">
+		<div>
+			<a class="button green morph add_commande_projet">Ajouter</a> 
+		</div>
+	</div>
+</fieldset>
+</form>';
+
+// SERVICE
+echo '<form id="add_service" class="formEl_b f_s_add" style="display:none">
+	<fieldset>
+				<legend>
+					Service <span class="small s_color"></span>
+				</legend>';
+
+echo '<div class="section type_service">
+<label>Type de service<small>Définir le type de ce service</small></label>
+<div>
+<select data-placeholder="Veuillez choisir un type de service..."
+class="chzn-select type_service" tabindex="2">
+<option value=""></option>';
+foreach ( $this->list_types_services as $type_service ) {
+	echo "<option value=\"" . $type_service ['libelle_type_service'] . "\">" . $type_service ['libelle_type_service'] . "</option>";
+}
+echo '</select><span class="f_help">Veuillez choisir un type de service</span>
+</div>
+</div>';
+// packs
+echo '<div class="section pack" style="display:none">
+<input type="hidden" class="pack" value="" name="pack"></input>
+</div>';
+
+echo '
+	<div class="section">
+		<label>Date debut</label>
+		<div>
+			<input type="text" id="datepick3" class="datepicker date_debut_service"
+				readonly="readonly" name="date_debut_service" />
+		</div>
+	</div>
+
+	<div class="section">
+		<label>Date fin</label>
+		<div>
+			<input type="text" id="datepick4" class="datepicker date_fin_service"
+				readonly="readonly" name="date_fin_service" />
+		</div>
+	</div>
+     <div class="section">
+		<label>Status<small>Veuillez definir un status initial pour ce service</small></label>
+		<div>
+			<input type="checkbox" id="status_service" name="status_service" class="status_service"
+				value="1" /> <span class="f_help"></span>
+				<input value="interrompu" type="hidden" id="status_hidden" name="status_hidden" class="status_hidden_service"
+				value="" />
+		</div>
+	</div>
+	<div class="section">
+		<label>Paiement<small>Si le client à payer ou non pour ce service</small></label>
+		<div>
+			<input type="checkbox" id="paye" name="paye" class="paye_service"
+				value="1" /> <span class="f_help"></span>
+				<input value="Non" type="hidden" id="paye_hidden" name="paye_hidden" class="paye_hidden_service" />
+		</div>
+	</div>
+	<div class="section alphaonly">
+		<label>Description<small>Un petit mot sur le service</small></label>
+		<div>
+			<textarea name="description_service"></textarea>
+		</div>
+	</div>
+
+	<div class="section">
+     <label>Prix<small>Donner un prix</small></label>
+         <div>
+             <input type="text" id="sStep" value="1000.00" name="prix_service" class="prix_service"/>
+           </div>
+     </div>
+	';
+echo '	
+	
+	
+	<div class="section last">
+		<div>
+			<a class="button green morph add_commande_service">Ajouter</a> 
+		</div>
+	</div>
+</fieldset>
+</form>';
+
+echo '</div>';
+?>

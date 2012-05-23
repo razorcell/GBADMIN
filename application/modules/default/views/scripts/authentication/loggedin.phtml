@@ -1,0 +1,24 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="<?php echo $this->baseUrl('style.css');?>" />
+</head>
+
+
+<div class="right_content">
+	<h2>Welcome!</h2>
+	
+	<div class="valid_box">
+	<span style="font-size:14px"><?php echo $this->message;?></span>
+	</div>
+
+</div>
+
+<div class="left_content">
+	<div class="sidebarmenu">
+	
+			<a class="menuitem" href="<?php echo $this->url(array('controller' => 'client', 'action' => 'add' ),'default',true);?>">Ajouter un client</a>
+			<a class="menuitem" href="<?php echo $this->url(array('controller' => 'authentication', 'action' => 'index' ),'default',true);?>">S'authentifier</a>	
+		
+	</div>
+</div>
+</html>

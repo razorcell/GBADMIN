@@ -1,0 +1,322 @@
+2012-05-23T21:27:56+02:00 INFO (6): Fonction init() executée
+2012-05-23T21:27:56+02:00 INFO (6): service modifyACtion()
+2012-05-23T21:27:56+02:00 INFO (6): Request body : {"pack" : "tm Basic","prix" : "500.00","status_hidden" : "Interrompu","paye" : "1","paye_hidden" : "Oui","description" : "www.rien.fr","date_debut" : "29.05.2012","date_fin" : "31.05.2012","commande" : "18","type_service" : "Hebergement","pack" : "tm Basic","id" : "18"}
+2012-05-23T21:27:56+02:00 INFO (6): Decoded data from user : <pre>array(11) {
+  ["pack"] => string(8) "tm Basic"
+  ["prix"] => string(6) "500.00"
+  ["status_hidden"] => string(10) "Interrompu"
+  ["paye"] => string(1) "1"
+  ["paye_hidden"] => string(3) "Oui"
+  ["description"] => string(11) "www.rien.fr"
+  ["date_debut"] => string(10) "29.05.2012"
+  ["date_fin"] => string(10) "31.05.2012"
+  ["commande"] => string(2) "18"
+  ["type_service"] => string(11) "Hebergement"
+  ["id"] => string(2) "18"
+}
+</pre>
+2012-05-23T21:27:56+02:00 INFO (6): id type_service trouvé = 13
+2012-05-23T21:27:56+02:00 INFO (6): id pack trouvé = 22
+2012-05-23T21:27:56+02:00 INFO (6): service to save <pre>array(9) {
+  ["description"] => string(11) "www.rien.fr"
+  ["prix"] => string(6) "500.00"
+  ["date_debut"] => string(10) "29.05.2012"
+  ["date_fin"] => string(10) "31.05.2012"
+  ["status"] => string(10) "Interrompu"
+  ["id_type_service"] => string(2) "13"
+  ["id_pack"] => string(2) "22"
+  ["paye"] => string(3) "Oui"
+  ["id_commande"] => string(2) "18"
+}
+</pre>
+2012-05-23T21:27:56+02:00 INFO (6): update service : UPDATE `service` SET `description` = ?, `prix` = ?, `date_debut` = ?, `date_fin` = ?, `status` = ?, `id_type_service` = ?, `id_pack` = ?, `paye` = ?, `id_commande` = ? WHERE (id_service = 18)
+2012-05-23T21:27:56+02:00 INFO (6): insertion - service - OUI
+2012-05-23T21:34:30+02:00 INFO (6): Fonction init() executée
+2012-05-23T21:34:30+02:00 INFO (6): service modifyform()
+2012-05-23T21:34:30+02:00 INFO (6): <pre>bool(false)
+</pre>
+2012-05-23T21:42:52+02:00 INFO (6): IndexController : Fonction init() executée
+2012-05-23T21:42:52+02:00 INFO (6): IndexConroller : Fonction index() executée
+2012-05-23T22:22:51+02:00 INFO (6): IndexController : Fonction init() executée
+2012-05-23T22:22:51+02:00 INFO (6): IndexConroller : Fonction index() executée
+2012-05-23T22:28:13+02:00 INFO (6): Request body : {"date_debut" : "01.05.2012","date_fin" : "24.05.2012","description_projet" : "some bla bla bla","status" : "1","status_hidden" : "actif","paye" : "1","paye_hidden" : "Oui","prix_projet" : "5900.00","request_type" : "projet","client" : "Kevin","id_commande" : "1","type_projet" : "Desktop application","progression" : "56","description_commande" : "Economic forum, from M.ALAMI","employes" : [{"name " : "alami"},{"name " : "mendili"}]}
+2012-05-23T22:28:13+02:00 INFO (6): PART 1 SOLVE COMMANDE
+2012-05-23T22:28:13+02:00 INFO (6): COMMANDE EXIST
+2012-05-23T22:28:13+02:00 INFO (6): INSERT PROJET
+2012-05-23T22:28:13+02:00 INFO (6): *********************PHASE D INSERTION DU PROJET************
+2012-05-23T22:28:13+02:00 INFO (6): type_projet_id trouvé = 3
+2012-05-23T22:28:13+02:00 INFO (6): <pre>array(9) {
+  ["description"] => string(16) "some bla bla bla"
+  ["prix"] => string(7) "5900.00"
+  ["progression"] => string(2) "56"
+  ["status"] => string(5) "actif"
+  ["date_debut"] => string(10) "01.05.2012"
+  ["date_fin"] => string(10) "24.05.2012"
+  ["id_type_projet"] => string(1) "3"
+  ["paye"] => string(3) "Oui"
+  ["id_commande"] => string(1) "1"
+}
+</pre>
+2012-05-23T22:28:13+02:00 INFO (6): add a project : INSERT INTO `projet` (`description`, `prix`, `progression`, `status`, `date_debut`, `date_fin`, `id_type_projet`, `paye`, `id_commande`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+2012-05-23T22:28:13+02:00 INFO (6): last inserted ID = 44
+2012-05-23T22:28:13+02:00 INFO (6): insertion - PROJET - OUI
+2012-05-23T22:28:13+02:00 INFO (6): *****************HASE D INSERTION DES TUPLES id_projet | id_employe************
+2012-05-23T22:28:13+02:00 INFO (6): MATCH FOUND : nom employe trouvé alami<-------> nom employe from user alami
+2012-05-23T22:28:13+02:00 INFO (6): <pre>array(2) {
+  ["id_projet"] => string(2) "44"
+  ["id_employe"] => string(1) "1"
+}
+</pre>
+2012-05-23T22:28:13+02:00 INFO (6): add intervention : INSERT INTO `intervention` (`id_projet`, `id_employe`) VALUES (?, ?)
+2012-05-23T22:28:13+02:00 INFO (6): insertion - INTERVENTION - OUI                FIN
+2012-05-23T22:28:13+02:00 INFO (6): MATCH FOUND : nom employe trouvé mendili<-------> nom employe from user mendili
+2012-05-23T22:28:13+02:00 INFO (6): <pre>array(2) {
+  ["id_projet"] => string(2) "44"
+  ["id_employe"] => string(1) "2"
+}
+</pre>
+2012-05-23T22:28:13+02:00 INFO (6): add intervention : INSERT INTO `intervention` (`id_projet`, `id_employe`) VALUES (?, ?)
+2012-05-23T22:28:13+02:00 INFO (6): insertion - INTERVENTION - OUI                FIN
+2012-05-23T22:28:19+02:00 INFO (6): Fonction init() executée
+2012-05-23T22:28:19+02:00 INFO (6): Request body : {"type_service":"Hebergement"}
+2012-05-23T22:28:19+02:00 INFO (6): packs Assoc <pre>array(9) {
+  [7] => array(3) {
+    ["id_pack"] => string(1) "7"
+    ["libelle_pack"] => string(13) "Pack Etudiant"
+    ["id_type_service"] => string(2) "13"
+  }
+  [8] => array(3) {
+    ["id_pack"] => string(1) "8"
+    ["libelle_pack"] => string(18) "Pack Professionnel"
+    ["id_type_service"] => string(2) "13"
+  }
+  [9] => array(3) {
+    ["id_pack"] => string(1) "9"
+    ["libelle_pack"] => string(15) "Pack Entreprise"
+    ["id_type_service"] => string(2) "13"
+  }
+  [20] => array(3) {
+    ["id_pack"] => string(2) "20"
+    ["libelle_pack"] => string(11) "tm Etudiant"
+    ["id_type_service"] => string(2) "13"
+  }
+  [21] => array(3) {
+    ["id_pack"] => string(2) "21"
+    ["libelle_pack"] => string(9) "tm Start "
+    ["id_type_service"] => string(2) "13"
+  }
+  [22] => array(3) {
+    ["id_pack"] => string(2) "22"
+    ["libelle_pack"] => string(8) "tm Basic"
+    ["id_type_service"] => string(2) "13"
+  }
+  [23] => array(3) {
+    ["id_pack"] => string(2) "23"
+    ["libelle_pack"] => string(11) "tm Business"
+    ["id_type_service"] => string(2) "13"
+  }
+  [24] => array(3) {
+    ["id_pack"] => string(2) "24"
+    ["libelle_pack"] => string(6) "tm Pro"
+    ["id_type_service"] => string(2) "13"
+  }
+  [25] => array(3) {
+    ["id_pack"] => string(2) "25"
+    ["libelle_pack"] => string(10) "tm VPServe"
+    ["id_type_service"] => string(2) "13"
+  }
+}
+</pre>
+2012-05-23T22:28:19+02:00 INFO (6): {"7":{"id_pack":"7","libelle_pack":"Pack Etudiant","id_type_service":"13"},"8":{"id_pack":"8","libelle_pack":"Pack Professionnel","id_type_service":"13"},"9":{"id_pack":"9","libelle_pack":"Pack Entreprise","id_type_service":"13"},"20":{"id_pack":"20","libelle_pack":"tm Etudiant","id_type_service":"13"},"21":{"id_pack":"21","libelle_pack":"tm Start ","id_type_service":"13"},"22":{"id_pack":"22","libelle_pack":"tm Basic","id_type_service":"13"},"23":{"id_pack":"23","libelle_pack":"tm Business","id_type_service":"13"},"24":{"id_pack":"24","libelle_pack":"tm Pro","id_type_service":"13"},"25":{"id_pack":"25","libelle_pack":"tm VPServe","id_type_service":"13"}}
+2012-05-23T22:28:34+02:00 INFO (6): Request body : {"date_debut_service" : "02.05.2012","date_fin_service" : "24.05.2012","status_service" : "1","status_hidden" : "Actif","paye" : "1","paye_hidden" : "Oui","description_service" : "some bli bli bli","prix_service" : "1000.00","request_type" : "service","client" : "Kevin","id_commande" : "1","description_commande" : "Economic forum, from M.ALAMI","type_service" : "Hebergement","pack" : "Pack Etudiant"}
+2012-05-23T22:28:34+02:00 INFO (6): PART 1 SOLVE COMMANDE
+2012-05-23T22:28:34+02:00 INFO (6): COMMANDE EXIST
+2012-05-23T22:28:34+02:00 INFO (6): INSERT SERVICE
+2012-05-23T22:28:34+02:00 INFO (6): *********************PHASE D INSERTION SERVICE************
+2012-05-23T22:28:34+02:00 INFO (6): id type_service trouvé = 13
+2012-05-23T22:28:34+02:00 INFO (6): id pack trouvé = 7
+2012-05-23T22:28:34+02:00 INFO (6): service to save <pre>array(9) {
+  ["description"] => string(16) "some bli bli bli"
+  ["prix"] => string(7) "1000.00"
+  ["date_debut"] => string(10) "02.05.2012"
+  ["date_fin"] => string(10) "24.05.2012"
+  ["status"] => string(5) "Actif"
+  ["id_type_service"] => string(2) "13"
+  ["id_pack"] => string(1) "7"
+  ["paye"] => string(3) "Oui"
+  ["id_commande"] => string(1) "1"
+}
+</pre>
+2012-05-23T22:28:34+02:00 INFO (6): inserer service : INSERT INTO `service` (`description`, `prix`, `date_debut`, `date_fin`, `status`, `id_type_service`, `id_pack`, `paye`, `id_commande`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+2012-05-23T22:28:34+02:00 INFO (6): last inserted ID = 21
+2012-05-23T22:28:34+02:00 INFO (6): insertion - service - OUI
+2012-05-23T22:33:04+02:00 INFO (6): Fonction init() executée
+2012-05-23T22:33:04+02:00 INFO (6): get all services : SELECT * FROM service
+2012-05-23T22:36:19+02:00 INFO (6): Fonction init() executée
+2012-05-23T22:36:19+02:00 INFO (6): get all services : SELECT * FROM service
+2012-05-23T22:36:23+02:00 INFO (6): Fonction init() executée
+2012-05-23T22:36:23+02:00 INFO (6): service modifyform()
+2012-05-23T22:36:23+02:00 INFO (6): <pre>object(stdClass)#124 (10) {
+  ["id_service"] => string(2) "13"
+  ["description"] => string(29) "l&#039;hebergement pack entreprise"
+  ["prix"] => string(4) "1000"
+  ["date_debut"] => string(10) "01.04.2012"
+  ["date_fin"] => string(10) "21.06.2012"
+  ["status"] => string(5) "Actif"
+  ["id_type_service"] => string(2) "13"
+  ["id_pack"] => string(1) "9"
+  ["paye"] => string(3) "Oui"
+  ["id_commande"] => string(2) "18"
+}
+</pre>
+2012-05-23T22:36:28+02:00 INFO (6): Fonction init() executée
+2012-05-23T22:36:28+02:00 INFO (6): service modifyACtion()
+2012-05-23T22:36:28+02:00 INFO (6): Request body : {"pack" : "Pack Entreprise","prix" : "1000.00","status" : "1","status_hidden" : "Actif","paye_hidden" : "Non","description" : "l'hebergement pack entreprise","date_debut" : "01.04.2012","date_fin" : "21.06.2012","commande" : "18","type_service" : "Hebergement","pack" : "Pack Entreprise","id" : "13"}
+2012-05-23T22:36:28+02:00 INFO (6): Decoded data from user : <pre>array(11) {
+  ["pack"] => string(15) "Pack Entreprise"
+  ["prix"] => string(7) "1000.00"
+  ["status"] => string(1) "1"
+  ["status_hidden"] => string(5) "Actif"
+  ["paye_hidden"] => string(3) "Non"
+  ["description"] => string(29) "l&#039;hebergement pack entreprise"
+  ["date_debut"] => string(10) "01.04.2012"
+  ["date_fin"] => string(10) "21.06.2012"
+  ["commande"] => string(2) "18"
+  ["type_service"] => string(11) "Hebergement"
+  ["id"] => string(2) "13"
+}
+</pre>
+2012-05-23T22:36:28+02:00 INFO (6): id type_service trouvé = 13
+2012-05-23T22:36:28+02:00 INFO (6): id pack trouvé = 9
+2012-05-23T22:36:28+02:00 INFO (6): service to save <pre>array(9) {
+  ["description"] => string(29) "l&#039;hebergement pack entreprise"
+  ["prix"] => string(7) "1000.00"
+  ["date_debut"] => string(10) "01.04.2012"
+  ["date_fin"] => string(10) "21.06.2012"
+  ["status"] => string(5) "Actif"
+  ["id_type_service"] => string(2) "13"
+  ["id_pack"] => string(1) "9"
+  ["paye"] => string(3) "Non"
+  ["id_commande"] => string(2) "18"
+}
+</pre>
+2012-05-23T22:36:28+02:00 INFO (6): update service : UPDATE `service` SET `description` = ?, `prix` = ?, `date_debut` = ?, `date_fin` = ?, `status` = ?, `id_type_service` = ?, `id_pack` = ?, `paye` = ?, `id_commande` = ? WHERE (id_service = 13)
+2012-05-23T22:36:28+02:00 INFO (6): insertion - service - OUI
+2012-05-23T22:36:30+02:00 INFO (6): Fonction init() executée
+2012-05-23T22:36:30+02:00 INFO (6): get all services : SELECT * FROM service
+2012-05-23T22:37:01+02:00 INFO (6): Fonction init() executée
+2012-05-23T22:37:01+02:00 INFO (6): <pre>array(3) {
+  [0] => array(2) {
+    ["id_employe"] => string(1) "1"
+    ["id_projet"] => string(2) "15"
+  }
+  [1] => array(2) {
+    ["id_employe"] => string(1) "2"
+    ["id_projet"] => string(2) "15"
+  }
+  [2] => array(2) {
+    ["id_employe"] => string(1) "3"
+    ["id_projet"] => string(2) "15"
+  }
+}
+</pre>
+2012-05-23T22:37:06+02:00 INFO (6): Fonction init() executée
+2012-05-23T22:37:06+02:00 INFO (6): Projet modifyAction()
+2012-05-23T22:37:06+02:00 INFO (6): Request body : {"date_debut" : "2002-05-20","date_fin" : "2021-05-20","description" : "Hotel farah demander pas M.Skali Haut priorité","status" : "1","status_hidden" : "Actif","paye_hidden" : "Non","prix" : "12000.00","id" : "15","commande" : "1","type_projet" : "Desktop application","progression" : "35"}
+2012-05-23T22:37:06+02:00 INFO (6): *********************PHASE DE MISE A JOUR DU PROJET************
+2012-05-23T22:37:06+02:00 INFO (6): type_projet_id trouvé = 3
+2012-05-23T22:37:06+02:00 INFO (6): <pre>array(9) {
+  ["description"] => string(47) "Hotel farah demander pas M.Skali Haut priorité"
+  ["prix"] => string(8) "12000.00"
+  ["progression"] => string(2) "35"
+  ["status"] => string(5) "Actif"
+  ["date_debut"] => string(10) "2002-05-20"
+  ["date_fin"] => string(10) "2021-05-20"
+  ["id_type_projet"] => string(1) "3"
+  ["paye"] => string(3) "Non"
+  ["id_commande"] => string(1) "1"
+}
+</pre>
+2012-05-23T22:37:06+02:00 INFO (6): modify project : UPDATE `projet` SET `description` = ?, `prix` = ?, `progression` = ?, `status` = ?, `date_debut` = ?, `date_fin` = ?, `id_type_projet` = ?, `paye` = ?, `id_commande` = ? WHERE (id_projet = 15)
+2012-05-23T22:37:06+02:00 INFO (6): MISE A JOUR - PROJET - OUI
+2012-05-23T22:37:06+02:00 INFO (6): Aucun employe definie pour ce projet
+2012-05-23T22:37:11+02:00 INFO (6): Fonction init() executée
+2012-05-23T22:37:11+02:00 INFO (6): <pre>array(2) {
+  [0] => array(2) {
+    ["id_employe"] => string(1) "1"
+    ["id_projet"] => string(2) "44"
+  }
+  [1] => array(2) {
+    ["id_employe"] => string(1) "2"
+    ["id_projet"] => string(2) "44"
+  }
+}
+</pre>
+2012-05-23T22:37:16+02:00 INFO (6): Fonction init() executée
+2012-05-23T22:37:16+02:00 INFO (6): Projet modifyAction()
+2012-05-23T22:37:16+02:00 INFO (6): Request body : {"date_debut" : "2001-05-20","date_fin" : "2024-05-20","description" : "some bla bla bla","status" : "1","status_hidden" : "Actif","paye_hidden" : "Non","prix" : "5900.00","id" : "44","commande" : "1","type_projet" : "Desktop application","progression" : "56"}
+2012-05-23T22:37:16+02:00 INFO (6): *********************PHASE DE MISE A JOUR DU PROJET************
+2012-05-23T22:37:16+02:00 INFO (6): type_projet_id trouvé = 3
+2012-05-23T22:37:16+02:00 INFO (6): <pre>array(9) {
+  ["description"] => string(16) "some bla bla bla"
+  ["prix"] => string(7) "5900.00"
+  ["progression"] => string(2) "56"
+  ["status"] => string(5) "Actif"
+  ["date_debut"] => string(10) "2001-05-20"
+  ["date_fin"] => string(10) "2024-05-20"
+  ["id_type_projet"] => string(1) "3"
+  ["paye"] => string(3) "Non"
+  ["id_commande"] => string(1) "1"
+}
+</pre>
+2012-05-23T22:37:16+02:00 INFO (6): modify project : UPDATE `projet` SET `description` = ?, `prix` = ?, `progression` = ?, `status` = ?, `date_debut` = ?, `date_fin` = ?, `id_type_projet` = ?, `paye` = ?, `id_commande` = ? WHERE (id_projet = 44)
+2012-05-23T22:37:16+02:00 INFO (6): MISE A JOUR - PROJET - OUI
+2012-05-23T22:37:16+02:00 INFO (6): Aucun employe definie pour ce projet
+2012-05-23T22:37:23+02:00 INFO (6): Fonction init() executée
+2012-05-23T22:37:23+02:00 INFO (6): service modifyform()
+2012-05-23T22:37:23+02:00 INFO (6): <pre>object(stdClass)#124 (10) {
+  ["id_service"] => string(2) "21"
+  ["description"] => string(16) "some bli bli bli"
+  ["prix"] => string(4) "1000"
+  ["date_debut"] => string(10) "02.05.2012"
+  ["date_fin"] => string(10) "24.05.2012"
+  ["status"] => string(5) "Actif"
+  ["id_type_service"] => string(2) "13"
+  ["id_pack"] => string(1) "7"
+  ["paye"] => string(3) "Oui"
+  ["id_commande"] => string(1) "1"
+}
+</pre>
+2012-05-23T22:37:27+02:00 INFO (6): Fonction init() executée
+2012-05-23T22:37:28+02:00 INFO (6): service modifyACtion()
+2012-05-23T22:37:28+02:00 INFO (6): Request body : {"pack" : "Pack Etudiant","prix" : "1000.00","status" : "1","status_hidden" : "Actif","paye_hidden" : "Non","description" : "some bli bli bli","date_debut" : "02.05.2012","date_fin" : "24.05.2012","commande" : "1","type_service" : "Hebergement","pack" : "Pack Etudiant","id" : "21"}
+2012-05-23T22:37:28+02:00 INFO (6): Decoded data from user : <pre>array(11) {
+  ["pack"] => string(13) "Pack Etudiant"
+  ["prix"] => string(7) "1000.00"
+  ["status"] => string(1) "1"
+  ["status_hidden"] => string(5) "Actif"
+  ["paye_hidden"] => string(3) "Non"
+  ["description"] => string(16) "some bli bli bli"
+  ["date_debut"] => string(10) "02.05.2012"
+  ["date_fin"] => string(10) "24.05.2012"
+  ["commande"] => string(1) "1"
+  ["type_service"] => string(11) "Hebergement"
+  ["id"] => string(2) "21"
+}
+</pre>
+2012-05-23T22:37:28+02:00 INFO (6): id type_service trouvé = 13
+2012-05-23T22:37:28+02:00 INFO (6): id pack trouvé = 7
+2012-05-23T22:37:28+02:00 INFO (6): service to save <pre>array(9) {
+  ["description"] => string(16) "some bli bli bli"
+  ["prix"] => string(7) "1000.00"
+  ["date_debut"] => string(10) "02.05.2012"
+  ["date_fin"] => string(10) "24.05.2012"
+  ["status"] => string(5) "Actif"
+  ["id_type_service"] => string(2) "13"
+  ["id_pack"] => string(1) "7"
+  ["paye"] => string(3) "Non"
+  ["id_commande"] => string(1) "1"
+}
+</pre>
+2012-05-23T22:37:28+02:00 INFO (6): update service : UPDATE `service` SET `description` = ?, `prix` = ?, `date_debut` = ?, `date_fin` = ?, `status` = ?, `id_type_service` = ?, `id_pack` = ?, `paye` = ?, `id_commande` = ? WHERE (id_service = 21)
+2012-05-23T22:37:28+02:00 INFO (6): insertion - service - OUI

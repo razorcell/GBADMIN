@@ -1,0 +1,160 @@
+<script type="text/javascript"
+	src="<?php echo $this->baseUrl('js/service.js');?>"></script>
+
+<style>
+	#feedback { font-size: 0.1em; }
+	#selectable{column-count: 2;}
+	#selectable .ui-selecting { background: #1F92FF; }
+	#selectable .ui-selected { background: #1F92FF; color: white; }
+	.list_packs {width:345px;}
+	.pack_item { margin: 8px; padding: 0.4em; font-size: 1.4em; height: 18px;}
+</style>
+
+<?php 
+echo  '<form id="add_service" class="f_s_modify">';
+echo '<div class="section">
+<label> Id <small></small></label>
+<div>
+<input disabled="disabled" id="id" name="id" type="text" class="validate[required] medium id_pack" maxlength="20" value="' . $this->service->id_service . '">
+</div>
+</div>';
+//commande
+echo '<div class="section commande">
+<label>Commande<small>La commande du service appartenu</small></label>
+<div>
+<select data-placeholder="'.$this->service->id_commande.'"
+class="chzn-select commande" tabindex="2">
+<option value=""></option>';
+foreach($this->list_commandes as $commande){
+	echo "<option value=\"".$commande['id_commande']."\">".$commande['id_commande']."</option>";
+}
+echo '</select><span class="f_help">Veuillez choisir un client</span>
+</div>
+</div>';
+//type de service
+$type_service_string = NULL;
+foreach($this->list_types_services as $type_service){
+	if($type_service['id_type_service'] == $this->service->id_type_service){
+		$type_service_string = $type_service['libelle_type_service'];
+	}
+}
+echo '<div class="section type_service">
+<label>Type de service<small>Définir le type de ce service</small></label>
+<div>
+<select data-placeholder="'.$type_service_string.'"
+class="chzn-select type_service" tabindex="2">
+<option value=""></option>';
+foreach($this->list_types_services as $type_service){
+	echo "<option value=\"".$type_service['libelle_type_service']."\">".$type_service['libelle_type_service']."</option>";
+}
+echo '</select><span class="f_help">Veuillez choisir un type de service</span>
+</div>
+</div>';
+//packs
+$packs_exists = false;//if packs for this type_service exists or not
+foreach ($this->list_packs as $pack){
+	if($pack['id_type_service'] == $this->service->id_type_service){
+		$packs_exists = true;
+	}
+}
+if($packs_exists){
+	$pack_string = NULL;//get the chosen pack string
+	foreach($this->list_packs as $pack){
+		if($pack['id_pack'] == $this->service->id_pack){
+			$pack_string = $pack['libelle_pack'];
+		}
+	}
+	echo '<div class="section pack visible">
+	<label>Packs<small>Définir le type de pack</small></label><div class="list_packs"><ul id="selectable">';
+	foreach ($this->list_packs as $pack){
+		if($pack['id_type_service'] == $this->service->id_type_service){
+			echo '<li class="ui-widget-content pack_item">'.$pack['libelle_pack'].'<li>';
+		}
+	}
+	echo '</ul></div>';
+	echo '<input type="hidden" class="pack_hidden" value="'.$pack_string.'" name="pack">
+	</div>';
+}else{//if no packs for this type_service exists
+	echo '<div class="section pack" style="display:none">
+	<input type="hidden" class="pack" value="" name="pack"></input>
+	</div>';
+}
+
+echo '
+<div class="section">
+     <label>Prix<small>Donner un prix</small></label>
+         <div>
+             <input type="text" id="sStep" value="'.$this->service->prix.'" name="prix" class="prix_service"/>
+           </div>
+     </div>
+     <div class="section">
+		<label>Status<small>Veuillez definir un status initial pour ce service</small></label>
+		<div>
+			<input type="checkbox" id="status" name="status" class="status" value="1" ';
+if($this->service->status == 'Actif'){
+	echo 'checked="checked"';
+}
+			echo'> <span class="f_help"></span>
+				<input value="'.$this->service->status.'" type="hidden" id="status_hidden" name="status_hidden" class="status_hidden"/>
+		</div>
+	</div>
+	<div class="section">
+		<label>Paiement<small>Si le client à payer ou non pour ce service</small></label>
+		<div>
+			<input type="checkbox" id="paye" name="paye" class="paye" value="1" ';
+			if($this->service->paye == 'Oui'){
+				echo 'checked="checked"';
+			}
+			echo '> <span class="f_help"></span>
+				<input value="'.$this->service->paye.'" type="hidden" id="paye_hidden" name="paye_hidden" class="paye_hidden" />
+		</div>
+	</div>
+	<div class="section alphaonly">
+		<label>Description<small>Un petit mot sur le service</small></label>
+		<div>
+			<textarea name="description">'.$this->service->description.'</textarea>
+		</div>
+	</div>
+	
+	<div class="section">
+		<label>Date debut</label>
+		<div>
+			<input type="text" id="datepick" class="datepicker date_debut" value="'.$this->service->date_debut.'"
+				readonly="readonly" name="date_debut" />
+		</div>
+	</div>
+
+	<div class="section">
+		<label>Date fin</label>
+		<div>
+			<input type="text" id="datepick2" class="datepicker date_fin"
+				readonly="readonly" name="date_fin" value="'.$this->service->date_fin.'"/>
+		</div>
+	</div>	
+	';
+	echo '	
+	<div class="section last">
+		<div>
+			<a class="button green morph modify_service">Appliquer les modifications</a> 
+		</div>
+	</div>
+
+</form>';
+?>
+<script type="text/javascript">
+<!--
+$(document).ready(
+		function() {
+	//highlight the selected pack
+	$( "#selectable" ).selectable();
+	if($('div.pack').hasClass('visible')){//there is a list of packs
+		var pack_selectionne = $('input.pack_hidden').attr('value');
+		$('div.list_packs').find('li.ui-widget-content').each(function(){
+			if($(this).html() == pack_selectionne){
+				$(this).addClass('ui-selected');
+			}
+		});
+	}
+});
+//-->
+</script>

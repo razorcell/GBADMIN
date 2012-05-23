@@ -1,0 +1,266 @@
+<script type="text/javascript"
+	src="<?php echo $this->baseUrl('js/client.js');?>"></script>
+	
+	<script type="text/javascript">
+$(document).ready(function(){
+			//check the right gender 'homme' ou 'femme'
+			if($('.hidden_gender').attr('value') == 0){
+					$('label[for="radio-1"]').addClass('checked');
+					$('label[for="radio-2"]').removeClass('checked');
+
+				}else{
+					$('label[for="radio-2"]').addClass('checked');
+					$('label[for="radio-1"]').removeClass('checked');
+					}
+});
+</script>
+	
+	<?php 
+	echo '
+<form id="particulier" class="f_c_p_modify formEl_b">
+		<fieldset>
+			<legend>
+				Particulier <span class="small s_color"></span>
+			</legend>
+			<div class="section">
+		<label> Id <small></small></label>
+		<div>
+			<input disabled="disabled" id="id" name="id" type="text" class="validate[required] medium id_client" maxlength="20" value="' . $this->client['id_client'] . '">
+		</div>
+	</div>
+				<div class="section alphaonly">
+					<label>Nom<small></small></label>
+					<div>
+						<input id="nom_p" name="nom_p" type="text"
+							class="validate[required] medium nom_p" maxlength="20" value="' . $this->client['nom'] . '">
+					</div>
+				</div>
+				<div class="section alphaonly">
+					<label> Prénom <small></small></label>
+					<div>
+						<input id="firstname_p" name="prenom_p" type="text"
+							class="medium prenom_p" maxlength="20" value="' . $this->client['prenom'] . '">
+					</div>
+				</div>
+
+				<div class="section ">
+					<label>gender<small>Text custom</small></label>
+					<div>
+						<div>
+							<input type="radio" name="gender_p" id="radio-1" value="0"
+								class="ck_p gender_p" /> <label for="radio-1">Homme</label>
+						</div>
+						<div>
+							<input type="radio" name="gender_p" id="radio-2" value="1"
+								class="ck_p gender_p" /> <label for="radio-2">Femme</label>
+						</div>
+					</div>
+				</div>
+				<div class="section">
+				<label> Adresse <small>Adresse du client</small></label>
+				<div>
+					<input type="text" name="adresse_p" class=" full adresse_p" value="' . $this->client['adresse'] . '"/><span
+						class="f_help">Entrez l\'adresse du client</span>
+				</div>
+			</div>
+				<div class="section">
+					<label> E-mail<small>Text custom</small></label>
+					<div>
+						<input type="text" id="email_p"
+							class="validate[custom[email]]  large email_p"
+							name="email_p" id="" value="' . $this->client['email'] . '">
+					</div>
+				</div>
+				<div class="section numericonly">
+					<label> Tél <small>Text custom</small></label>
+					<div>
+						<input id="tel_p" name="tel_p" type="text"
+							class="validate[required] small tel_p" maxlength="20" value="' . $this->client['tel'] . '">
+					</div>
+				</div>
+		
+		</fieldset>
+		<div class="section last">
+			<div>
+				<a class="button blue morph submit_form modify_client_particulier"
+					data-icon="⏏">Update</a> 
+					<input class="hidden_gender" type="hidden" value="' . ($this->client['gender'] == "Homme" ? "0" : "1") . '">
+			</div>
+		</div>
+
+</form>';
+	
+echo '
+	<div class="widget" style="padding:20px ;border:0px">
+	<form>
+	<div class="section list_type_div">
+	<label>Type d\'élément<small>Afficher les projets ou bien les services appartenant à cette commande</small></label>
+	<div>
+	<input type="checkbox" id="show_type" name="liste_type" class="liste_type"
+	value="1" /><span class="f_help"></span>
+	</div>
+	</div>
+	</form>
+	<div id="projets">';
+	
+	$i = 0;
+	echo '
+	<a class="delete_b_commande_projet button pink morph">- Supprimer</a>
+	<a class="selectall_projet button blue morph">De/Selectionner tous</a>
+	<div id="UITab_projets">
+	
+	<div class="tab_container">
+	
+	<div id="tab1_projets" class="tab_content">
+	<div class="load_page">
+	
+	<form>
+	<div class="tableName inTab">
+	<table class="display data_table2 client_projet"  id="projets">
+	<thead>
+	<tr>
+	
+	<th align="left">Id</th>
+	<th>Date debut</th>
+	<th>Date fin</th>
+	<th>Status</th>
+	<th>Paiement</th>
+	<th>Type de projet</th>
+	<th>Management</th>
+	</tr>
+	</thead>
+	<tbody>';
+	
+	foreach ( $this->list_projets as $projet ) {
+	
+		echo '<tr>
+		<td  class="id_projet" align ="left">' . $projet ['id_projet'] . '</td>';
+	
+		echo '<td class="date_debut">' . $projet ['date_debut'] . '</td>
+		<td class="date_fin">' . $projet ['date_fin'] . '</td>
+		<td class="status">' . $projet ['status'] . '</td>
+		<td class="paiement">' . $projet ['paye'] . '</td>';
+		$type_projet_string = NULL;
+		foreach ($this->list_types_projets as $type_projet){
+			if($type_projet['id_type_projet'] == $projet['id_type_projet']){
+				$type_projet_string = $type_projet['nom_type_projet'];
+			}
+		}
+		echo '<td>' . $type_projet_string. '</td>';
+		echo '
+		<td>
+		<span class="tip">
+		<a  title="Edit" class="edit_projet" href="';
+		echo $this->url ( array ('id' => $projet ['id_projet'] ), 'projetmodify' );
+		echo '">
+		<img src="'.$this->baseUrl('images/icon/icon_edit.png').'" >
+		</a>
+		</span>
+		<span class="tip">
+		<a id="p' . $i . '" class="Delete_projet"  name="Band ring" title="Delete">
+		<img src="'.$this->baseUrl('images/icon/icon_delete.png').'">
+		</a>
+		</span>
+		</td>
+		</tr>';
+		$i ++;
+	
+	}
+	
+	echo '</tbody>
+	</table>
+	</div>
+	</form>
+	</div>
+	</div><!--tab1-->
+	
+	</div>
+	</div><!-- End UITab -->
+	<!-- clear fix -->
+	<div class="clear"></div>
+	';
+	?>
+	
+	</div>
+	
+		<div id="services" style="display:none">
+			<?php
+	$i = 0;
+	echo '
+	<a class="delete_b_commande_service button pink morph">- Supprimer</a>
+	<a class="selectall_service button blue morph">De/Selectionner tous</a>
+	<div id="UITab_services">
+	
+	<div class="tab_container">
+	
+	<div id="tab1_services" class="tab_content" style="display : block">
+	<div class="load_page">
+	
+	<form>
+	<div class="tableName inTab">
+	
+	<table class="display data_table2 client_service"  id="services">
+	<thead>
+	<tr>
+	
+	<th align="left">Id</th>
+	<th>Date debut</th>
+	<th>Date fin</th>
+	<th>Status</th>
+	<th>Paiement</th>
+	<th>Type de service</th>
+	<th>Management</th>
+	</tr>
+	</thead>
+	<tbody>';
+	
+	foreach ( $this->list_services as $service ) {
+		
+		echo '<tr>
+		<td  class="id_service" align ="left">' . $service ['id_service'] . '</td>';
+		
+			echo '<td class="date_debut">' . $service ['date_debut'] . '</td>
+			<td class="date_fin">' . $service ['date_fin'] . '</td>
+			<td class="status">' . $service ['status'] . '</td>
+			<td class="paiement">' . $service ['paye'] . '</td>';
+			$type_service_string = NULL;
+			foreach ($this->list_types_services as $type_service){
+				if($type_service['id_type_service'] == $service['id_type_service']){
+					$type_service_string = $type_service['libelle_type_service'];
+				}
+			}
+			echo '<td>' . $type_service_string. '</td>';
+			// get the poste name
+			echo '
+			<td>
+			<span class="tip" >
+			<a  title="Edit" class="edit_service" href="';
+			echo $this->url ( array ('id' => $service ['id_service'] ), 'servicemodify' );
+			echo '">
+			<img src="'.$this->baseUrl('images/icon/icon_edit.png').'" >
+			</a>
+			</span>
+			<span class="tip" >
+			<a id="s' . $i . '" class="Delete_service"  name="Band ring" title="Delete">
+			<img src="'.$this->baseUrl('images/icon/icon_delete.png').'">
+			</a>
+			</span>
+			</td>
+			</tr>';
+			$i ++;
+	}
+	
+	echo '</tbody>
+	</table>
+	</div>
+	
+	</form>
+	</div>
+	</div><!--tab1-->
+	
+	</div>
+	</div><!-- End UITab -->
+	<!-- clear fix -->
+	<div class="clear"></div>';
+
+?>

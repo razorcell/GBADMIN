@@ -1,0 +1,82 @@
+<script type="text/javascript"
+	src="<?php echo $this->baseUrl('js/pack.js');?>"></script>
+
+<h5 class="test"></h5>
+
+<a class="button green morph"
+		href="<?php echo $this->url(array('controller' => 'pack', 'action' => 'add' ),'default',true);?>">+ Ajouter</a>
+	
+	<a class="delete_b button pink morph">- Supprimer</a>
+ <a class="selectall button blue morph">De/Selectionner tous</a>
+<?php
+$i = 0;
+echo '
+<div id="UITab">
+
+<div class="tab_container">
+
+<div id="tab1" class="tab_content">
+<div class="load_page">
+
+<form>
+<div class="tableName inTab">
+<h3 id="test"></h3>
+<table class="display data_table2 pack"  id="data_table3">
+<thead>
+<tr>
+
+<th align="left">Id</th>
+<th>Description</th>
+<th>Type de service</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>';
+
+foreach ( $this->list_packs as $pack ) {
+	echo '<tr>
+<td  class="id_pack" align ="left">' . $pack ['id_pack'] . '</td>
+<td class="nom_pack">' . $pack ['libelle_pack'] . '</td>';
+
+//get the service type name
+foreach($this->list_types_services as $type_service){
+	if($type_service['id_type_service'] == $pack ['id_type_service'])
+	{
+		$libelle_type_service = $type_service['libelle_type_service'];
+	}
+}
+echo '
+<td>' . $libelle_type_service . '</td>
+
+<td>
+<span class="tip" >
+<a  title="Edit" class="edit" href="';
+echo $this->url(array('id' => $pack ['id_pack']),'packmodify');
+echo '">
+<img src="images/icon/icon_edit.png" >
+</a>
+</span>
+<span class="tip" >
+<a id="' . $i . '" class="Delete"  name="Band ring" title="Delete">
+<img src="images/icon/icon_delete.png">
+</a>
+</span>
+</td>
+</tr>';
+	$i ++;
+};
+echo '</tbody>
+</table>
+</div>
+</form>
+</div>
+</div><!--tab1-->
+
+</div>
+</div><!-- End UITab -->
+<!-- clear fix -->
+<div class="clear"></div>
+';
+?>
+
+

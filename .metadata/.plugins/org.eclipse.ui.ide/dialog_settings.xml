@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<list key="installedFeatures">
+		<item value="com.zend.php.productivity:9.0.1.201112141951-D97yBWFDa-BNVtK26_Fu88"/>
+		<item value="org.eclipse.datatools.common.doc.user:1.9.1.v201108301820-26-311A16321A3557"/>
+		<item value="org.eclipse.datatools.connectivity.feature:1.9.1.v201108301820-7C7e8mEt1_wmuQjYnXQ6Zj5dM17"/>
+		<item value="org.eclipse.datatools.connectivity.oda.feature:1.9.1.v201108301820-7H7C7ICcNBHHBnJWDjSd"/>
+		<item value="org.eclipse.datatools.doc.user:1.9.1.v201108301820-47C08w95ENAK6AFDFK7"/>
+		<item value="org.eclipse.datatools.enablement.mysql.feature:1.9.1.v201108301820-546AkF78Z7Y9NBZ9A"/>
+		<item value="org.eclipse.datatools.modelbase.feature:1.9.1.v201108301820-77078CcNBHCBYKYEbNV"/>
+		<item value="org.eclipse.datatools.sqldevtools.ddlgen.feature:1.9.1.v201108301820-7A-3F7RZHLz-Hz-OlPz0Qf"/>
+		<item value="org.eclipse.datatools.sqldevtools.feature:1.9.1.v201108301820-7N847CFDsn0VdrPUJvPUshDWIPJ0"/>
+		<item value="org.eclipse.datatools.sqldevtools.parsers.feature:1.9.1.v201108301820-622BgJ9CR9XFcEWLP"/>
+		<item value="org.eclipse.dltk.core.index:3.0.0.v20101026-0553-7A--9oB5885N6C28DB5"/>
+		<item value="org.eclipse.dltk.core:3.0.0.v20101211-0331-7m--FE-z0Vkh_JYSEiiWT"/>
+		<item value="org.eclipse.draw2d:3.7.1.v20110830-1143-4607w3122194102254"/>
+		<item value="org.eclipse.egit:1.1.0.201109151100-r"/>
+		<item value="org.eclipse.emf.codegen.ecore.ui:2.7.0.v20110913-1156"/>
+		<item value="org.eclipse.emf.codegen.ecore:2.7.0.v20110913-1156"/>
+		<item value="org.eclipse.emf.codegen.ui:2.7.0.v20110913-1156"/>
+		<item value="org.eclipse.emf.codegen:2.7.0.v20110913-1156"/>
+		<item value="org.eclipse.emf.common.ui:2.7.0.v20110913-1156"/>
+		<item value="org.eclipse.emf.common:2.7.0.v20110912-0920"/>
+		<item value="org.eclipse.emf.converter:2.7.0.v20110913-1156"/>
+		<item value="org.eclipse.emf.databinding.edit:1.2.0.v20110913-1156"/>
+		<item value="org.eclipse.emf.databinding:1.2.0.v20110913-1156"/>
+		<item value="org.eclipse.emf.ecore.edit:2.7.0.v20110913-1156"/>
+		<item value="org.eclipse.emf.ecore.editor:2.7.0.v20110913-1156"/>
+		<item value="org.eclipse.emf.ecore:2.7.1.v20110912-0920"/>
+		<item value="org.eclipse.emf.edit.ui:2.7.0.v20110913-1156"/>
+		<item value="org.eclipse.emf.edit:2.7.1.v20110913-1526"/>
+		<item value="org.eclipse.emf.mapping.ecore.editor:2.7.0.v20110913-1156"/>
+		<item value="org.eclipse.emf.mapping.ecore:2.7.0.v20110913-1156"/>
+		<item value="org.eclipse.emf.mapping.ui:2.7.0.v20110913-1156"/>
+		<item value="org.eclipse.emf.mapping:2.7.0.v20110913-1156"/>
+		<item value="org.eclipse.emf:2.7.1.v20110913-1526"/>
+		<item value="org.eclipse.gef:3.7.1.v20110830-1143-777D181B3Bz06C853D8863365"/>
+		<item value="org.eclipse.help:1.3.0.v20110327-7i7uFFkFFp7gNobOpNgKo0"/>
+		<item value="org.eclipse.jgit:1.1.0.201109151100-r"/>
+		<item value="org.eclipse.php:3.0.0.v201112141159"/>
+		<item value="org.eclipse.platform:3.7.1.r37x_v20110729-9gF7UHOxFtniV7mI3T556iZN9AU8bEZ1lHMcVK"/>
+		<item value="org.eclipse.rcp:3.7.1.r37x_v20110729-9DB5FmNFnFLSFCtLxnRfMqt15A4A"/>
+		<item value="org.eclipse.rse.core:3.3.2.R33x_v201110030150-7a7JFZ4F8Fz0vz03_qRujci-z-Mp"/>
+		<item value="org.eclipse.rse.ftp:3.0.301.R33x_v201109141647-782F8O9KC92gz097E9EKF23225"/>
+		<item value="org.eclipse.rse.ssh:3.0.301.R33x_v201109141647-7A3F9xAGGB5k0C7KEATN92641"/>
+		<item value="org.eclipse.wst.common.fproj:3.3.0.v201102150115-377DF8s7355397B4B9B"/>
+		<item value="org.eclipse.wst.jsdt.feature:1.3.1.v201108102009-7F78FXRFBBoPbXRPcHfz-uy"/>
+		<item value="org.eclipse.wst.web_ui.feature:3.3.1.v201107072200-7O7IFhREMiB5vNoYqf01XHTvUndyz-yx-9kUyXXL"/>
+		<item value="org.eclipse.wst.xml_ui.feature:3.3.1.v201108102009-7H7EFZ3DxumTlaI6nheRdHo2p1KaDIL1Uz-S3PL"/>
+		<item value="org.eclipse.xsd.edit:2.7.0.v20110606-0949"/>
+		<item value="org.eclipse.xsd:2.7.0.v20110606-0949"/>
+	</list>
+	<section name="ExternalProjectImportWizard">
+		<item value="false" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
+		<item value="false" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
+	</section>
+</section>

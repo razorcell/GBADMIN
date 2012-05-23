@@ -1,0 +1,186 @@
+<script type="text/javascript"
+	src="<?php echo $this->baseUrl('js/client.js');?>"></script>
+
+<div class="widget" style="border: 0px">
+	<form style="margin: 20px">
+		<h5 class="test"></h5>
+		<div class="section">
+			<label>Type de client<small>Veuillez definir le type de votre client</small></label>
+			<div>
+				<input type="checkbox" id="show_service" name="type" class="type"
+					value="1" /><span class="f_help"></span>
+			</div>
+		</div>
+	</form>
+</div>
+
+<div class="widget" style="padding: 20px; border: 0px">
+
+	<form id="entreprise" class="formEl_b f_c_e_add">
+		<fieldset>
+			<legend>
+				Entreprise <span class="small s_color"></span>
+			</legend>
+			<div class="section alphaonly">
+				<label> Nom de l'entreprise<small></small></label>
+				<div>
+					<input id="lastname" name="nom_e" type="text"
+						class="validate[required] medium nom_e" maxlength="20">
+				</div>
+			</div>
+			<div class="section">
+				<label> E-mail<small>Email générale de la societé</small></label>
+				<div>
+					<input type="text"
+						class="validate[required,custom[email]]  large email_e"
+						name="email_e" id="e_required">
+				</div>
+			</div>
+			<div class="section numericonly">
+				<label> Telephone <small></small></label>
+				<div>
+					<input id="tel" name="tel_e" type="text"
+						class="validate[required] small tel_e" maxlength="20">
+				</div>
+			</div>
+			<div class="section numericonly">
+				<label>Fax<small>Fax de la societé</small></label>
+				<div>
+					<input type="text" class="validate[required]  large fax_e"
+						name="fax_e">
+				</div>
+			</div>
+			<div class="section">
+				<label> Adresse <small></small></label>
+				<div>
+					<input type="text" name="adresse_e" class=" full adresse_e" /><span
+						class="f_help"></span>
+				</div>
+			</div>
+			</br>
+			<fieldset>
+				<legend>
+					Représentant <span class="small s_color"></span>
+				</legend>
+				<div class="section alphaonly">
+					<label>Nom<small></small></label>
+					<div>
+						<input id="nom_representant" name="nom_r" type="text"
+							class="validate[required] medium nom_r" maxlength="20">
+					</div>
+				</div>
+				<div class="section alphaonly">
+					<label> Prénom <small></small></label>
+					<div>
+						<input id="firstname" name="prenom_r" type="text"
+							class="medium prenom_r" maxlength="20">
+					</div>
+				</div>
+				<div class="section ">
+					<label>gender<small></small></label>
+					<div>
+						<div>
+							<input type="radio" name="gender_r" id="radio-1" value="0"
+								class="ck gender_r"/> <label for="radio-1">Homme</label>
+						</div>
+						<div>
+							<input type="radio" name="gender_r" id="radio-2" value="1"
+								class="ck gender_r"/> <label for="radio-2">Femme</label>
+						</div>
+					</div>
+				</div>
+
+				<div class="section">
+					<label> E-mail<small></small></label>
+					<div>
+						<input type="text"
+							class="validate[required,custom[email]]  large email_r"
+							name="email_r" id="">
+					</div>
+				</div>
+				<div class="section numericonly">
+					<label> Tél <small></small></label>
+					<div>
+						<input id="tel" name="tel_r" type="text" class="small tel_r"
+							maxlength="20">
+					</div>
+				</div>
+			</fieldset>
+			<div class="section last">
+				<div>
+					<a class="button green morph submit_form add_client_entreprise"
+						data-icon="⏏">Ajouter</a>
+				</div>
+			</div>
+		</fieldset>
+	</form>
+
+
+	<form id="particulier" class="f_c_p_add formEl_b" style="display: none">
+		<fieldset>
+			<legend>
+				Particulier <span class="small s_color"></span>
+			</legend>
+
+			<div class="section alphaonly">
+				<label>Nom<small></small></label>
+				<div>
+					<input id="nom_p" name="nom_p" type="text"
+						class="validate[required] medium nom_p" maxlength="20">
+				</div>
+			</div>
+			<div class="section alphaonly">
+				<label> Prénom <small></small></label>
+				<div>
+					<input id="firstname_p" name="prenom_p" type="text"
+						class="medium prenom_p" maxlength="20">
+				</div>
+			</div>
+
+			<div class="section ">
+				<label>gender<small></small></label>
+				<div>
+					<div>
+						<input type="radio" name="gender_p" id="radio-3" value="0"
+							class="ck_p gender_p" /> <label for="radio-3">Homme</label>
+					</div>
+					<div>
+						<input type="radio" name="gender_p" id="radio-4" value="1"
+							class="ck_p gender_p" /> <label for="radio-4">Femme</label>
+					</div>
+				</div>
+			</div>
+			<div class="section">
+				<label> Adresse <small>Adresse du client</small></label>
+				<div>
+					<input type="text" name="adresse_p" class=" full adresse_p" /><span
+						class="f_help">Entrez l'adresse du client</span>
+				</div>
+			</div>
+			<div class="section">
+				<label> E-mail<small></small></label>
+				<div>
+					<input type="text"
+						class="validate[required,custom[email]]  large email_p"
+						name="email_p" id="">
+				</div>
+			</div>
+			<div class="section numericonly">
+				<label> Tél <small></small></label>
+				<div>
+					<input id="tel_p" name="tel_p" type="text"
+						class="validate[required] small tel_p" maxlength="20">
+				</div>
+			</div>
+
+		</fieldset>
+		<div class="section last">
+			<div>
+				<a class="button green morph submit_form add_client_particulier"
+					data-icon="⏏">Ajouter</a>
+			</div>
+		</div>
+
+	</form>
+
+</div>

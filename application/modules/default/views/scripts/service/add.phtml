@@ -1,0 +1,96 @@
+<script type="text/javascript"
+	src="<?php echo $this->baseUrl('js/service.js');?>"></script>
+<h5 class="test"></h5>
+<style>
+	#feedback { font-size: 0.1em; }
+	#selectable{column-count: 2;}
+	#selectable .ui-selecting { background: #1F92FF; }
+	#selectable .ui-selected { background: #1F92FF; color: white; }
+	.list_packs {width:345px;}
+	.pack_item { margin: 8px; padding: 0.4em; font-size: 1.4em; height: 18px;}
+</style>
+
+<?php 
+echo  '<form id="add_service" class="f_s_add">';
+//commande
+echo '<div class="section commande">
+<label>Commande<small>La commande à laquel ce service appartient</small></label>
+<div>
+<select data-placeholder="Veuillez choisir une commande..."
+class="chzn-select commande" tabindex="2">
+<option value=""></option>';
+foreach($this->list_commandes as $commande){
+	echo "<option value=\"".$commande['id_commande']."\">".$commande['id_commande']."</option>";
+}
+echo '</select><span class="f_help">Veuillez choisir un client</span>
+</div>
+</div>';
+//type de service
+echo '<div class="section type_service">
+<label>Type de service<small>Définir le type de ce service</small></label>
+<div>
+<select data-placeholder="Veuillez choisir un type de service..."
+class="chzn-select type_service" tabindex="2">
+<option value=""></option>';
+foreach($this->list_types_services as $type_service){
+	echo "<option value=\"".$type_service['libelle_type_service']."\">".$type_service['libelle_type_service']."</option>";
+}
+echo '</select><span class="f_help">Veuillez choisir un type de service</span>
+</div>
+</div>';
+//packs
+echo '<div class="section pack" style="display:none">
+<input type="hidden" class="pack" value="" name="pack"></input>
+</div>';
+echo'
+<div class="section">
+     <label>Prix<small>Donner un prix</small></label>
+         <div>
+             <input type="text" id="sStep" value="1000.00" name="prix" class="prix_service"/>
+           </div>
+     </div>
+     <div class="section">
+		<label>Status<small>Veuillez definir un status initial pour ce service</small></label>
+		<div>
+			<input type="checkbox" id="status" name="status" class="status" value="1" checked="checked"> 
+			<span class="f_help"></span>		
+		</div>
+	</div>
+	<input value="Interrompu" type="hidden" id="status_hidden" name="status_hidden" class="status_hidden"/>
+	<div class="section">
+		<label>Paiement<small>Si le client à payer ou non pour ce service</small></label>
+		<div>
+			<input type="checkbox" id="paye" name="paye" class="paye"
+				value="1" /> <span class="f_help"></span>
+				<input value="Non" type="hidden" id="paye_hidden" name="paye_hidden" class="paye_hidden" />
+		</div>
+	</div>
+	<div class="section alphaonly">
+		<label>Description<small>Un petit mot sur le service</small></label>
+		<div>
+			<textarea name="description"></textarea>
+		</div>
+	</div>	
+	<div class="section">
+		<label>Date debut</label>
+		<div>
+			<input type="text" id="datepick" class="datepicker date_debut"
+				readonly="readonly" name="date_debut" />
+		</div>
+	</div>
+	<div class="section">
+		<label>Date fin</label>
+		<div>
+			<input type="text" id="datepick2" class="datepicker date_fin"
+				readonly="readonly" name="date_fin" />
+		</div>
+	</div>';
+	echo '
+	<div class="section last">
+		<div>
+			<a class="button green morph add_service">Ajouter</a> 
+		</div>
+	</div>
+
+</form>';
+?>

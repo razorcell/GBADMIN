@@ -1,0 +1,22 @@
+<script type="text/javascript"
+	src="<?php echo $this->baseUrl('js/poste.js');?>"></script>
+
+<h5 class="test"></h5>
+<form action="#" id="validation" class="f_p_modify">
+	<div class="section textonly">
+		<label> Nom <small>Le nom de l'poste</small></label>
+		<div>
+			<input name="nom_poste" type="text" class="medium" value="<?php echo $this->poste->nom_poste;?>">
+		</div>
+	</div>
+	
+	<div class="section last">
+		<div>
+			<a class="button green morph modify_poste">Appliquer la modification</a>
+		</div>
+	</div>
+	<div>
+			<input name="id_poste" type="hidden" value="<?php echo $this->poste->id_poste;?>">
+		</div>
+
+</form>

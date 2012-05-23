@@ -1,0 +1,22 @@
+<script type="text/javascript"
+	src="<?php echo $this->baseUrl('js/typeservice.js');?>"></script>
+
+<h5 class="test"></h5>
+<form action="#" id="validation" class="f_t_s_modify">
+	<div class="section textonly">
+		<label> Libellé <small>Le libellé de ce type de service</small></label>
+		<div>
+			<input name="libelle_type_service" type="text" class="medium"
+				value="<?php echo $this->typeservice->libelle_type_service;?>">
+		</div>
+	</div>
+	<div class="section last">
+		<div>
+			<a class="button green morph modify_typeservice">Appliquer la modification</a>
+		</div>
+	</div>
+	<div>
+		<input name="id_type_service" type="hidden"
+			value="<?php echo $this->typeservice->id_type_service;?>">
+	</div>
+</form>

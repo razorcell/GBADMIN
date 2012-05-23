@@ -1,0 +1,115 @@
+<script type="text/javascript"
+	src="<?php echo $this->baseUrl('js/employe.js');?>"></script>
+
+
+<?php 
+
+echo '
+<h3 class="test"></h3>
+<form id="validation" class="f_e_add">
+	<div class="section alphaonly">
+		<label> Nom <small></small></label>
+		<div>
+			<input id="lastname" name="nom" type="text" class="validate[required] medium" maxlength="20">
+		</div>
+	</div>
+	<div class="section alphaonly">
+		<label> Prénom <small></small></label>
+		<div>
+			<input id="firstname" name="prenom" type="text" class="validate[required] medium" maxlength="20">
+		</div>
+	</div>
+	<div class="section ">
+		<label>Sexe<small></small></label>
+		<div>
+			<div>
+				<input type="radio" name="gender" id="radio-1" value="0"
+					class="ck"/> 
+					<label for="radio-1">Homme</label>
+			</div>
+			<div>
+				<input type="radio" name="gender" id="radio-2" value="1"
+					class="ck"  /> 
+					<label for="radio-2">Femme</label>
+			</div>
+		</div>
+	</div>
+
+	<div class="section">
+		<label> E-mail<small></small></label>
+		<div>
+			<input type="text" class="validate[required,custom[email]]  large email"
+				name="email" id="e_required">
+		</div>
+	</div>
+	<div class="section">
+		<label> Adresse <small></small></label>
+		<div>
+			<input type="text" name="adresse" class=" full" /><span class="f_help"></span>
+		</div>
+	</div>
+	<div class="section numericonly">
+		<label> Telephone <small></small></label>
+		<div>
+			<input id="tel" name="tel" type="text" class="validate[required] small" maxlength="20">
+		</div>
+	</div>
+
+	<div class="section">
+		<label> Compte d\'utilisateur <small></small></label>
+		<div>
+			<input type="text" name="username" id="username"
+				class="validate[required,minSize[3],maxSize[20],] medium" /><label>Nom
+				d\'utilisateur</label> <span class="f_help">Doit etre compris entre 3 et 20 caractères.
+			</span>
+		</div>
+		<div>
+			<input type="password" class="validate[required,minSize[3]] medium"
+				name="password" id="password" /><label>Mot de passe</label>
+		</div>
+		<div>
+			<input type="password"
+				class="validate[required,equals[password]] medium"
+				name="passwordCon" id="passwordCon" /><label>Confirmer le mot de
+				passe</label> <span class="f_help">Votre mot de passe doit contenir au moins 3 caractères.</span>
+		</div>
+	</div>';
+
+echo '<div class="section">
+	<label>Poste<small></small></label>
+	<div>
+	<select data-placeholder="Veuillez choisir un poste..."
+	class="chzn-select" tabindex="2">
+	<option value=""></option>';
+foreach($this->list_postes as $poste){
+	
+	echo "<option value=".$poste['nom_poste'].">".$poste['nom_poste']."</option>";
+	
+}
+echo '</select><span class="f_help">Veuillez choisir un poste</span>
+	</div>
+	</div>';
+	
+echo '	
+	<div class="section">
+		<label> Occupation <small></small></label>
+		<div>
+			<select class="chzn-select" multiple tabindex="4">
+				<option value=""></option>';
+foreach($this->list_occupations as $occupation)
+{
+	echo "<option value=".$occupation['nom_occup'].">".$occupation['nom_occup']."</option>";
+}
+echo'	</select>
+		</div>
+	</div>
+	<div class="section last">
+		<div>
+			<a class="button green morph submit_form add_employe" data-icon="⏏">Ajouter</a>
+		</div>
+	</div>
+</form>
+
+';
+
+?>

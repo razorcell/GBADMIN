@@ -1,0 +1,22 @@
+<script type="text/javascript"
+	src="<?php echo $this->baseUrl('js/occupation.js');?>"></script>
+
+<h5 class="test"></h5>
+<form action="#" id="validation" class="f_o_modify">
+	<div class="section textonly">
+		<label> Nom <small>Le nom de l'occupation</small></label>
+		<div>
+			<input name="nom_occup" type="text" class="medium" value="<?php echo $this->occupation->nom_occup;?>">
+		</div>
+	</div>
+	
+	<div class="section last">
+		<div>
+			<a class="button green morph modify_occup">Appliquer la modification</a>
+		</div>
+	</div>
+	<div>
+			<input name="id_occup" type="hidden" value="<?php echo $this->occupation->id_occup;?>">
+		</div>
+
+</form>

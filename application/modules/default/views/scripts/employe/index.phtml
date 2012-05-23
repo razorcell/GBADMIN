@@ -1,0 +1,86 @@
+<script type="text/javascript"
+	src="<?php echo $this->baseUrl('js/employe.js');?>"></script>
+
+<h5 class="test"></h5>
+
+<a class="button green morph"
+		href="<?php echo $this->url(array('controller' => 'employe', 'action' => 'add' ),'default',true);?>">+ Ajouter</a>
+	
+	<a class="delete_b button pink morph">- Supprimer</a>
+ <a class="selectall button blue morph">De/Selectionner tous</a>
+	
+	
+<?php
+$i = 0;
+$poste_name = NULL;
+echo '
+<div id="UITab">
+
+<div class="tab_container">
+
+<div id="tab1" class="tab_content">
+<div class="load_page">
+
+<form>
+<div class="tableName inTab">
+<h3 id="test"></h3>
+<table class="display data_table2 employe"  id="data_table3">
+<thead>
+<tr>
+
+<th align="left">Id</th>
+<th>Nom</th>
+<th>Prenom</th>
+<th>Email</th>
+<th>Poste</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>';
+foreach ( $this->list_employes as $employe ) {
+	echo '<tr>
+<td  class="id_employe" align ="left">' . $employe ['id_employe'] . '</td>
+<td class="nom">' . $employe ['nom'] . '</td>
+<td>' . $employe ['prenom'] . '</td>
+<td>' . $employe ['email'] . '</td>';
+//get the poste name
+foreach($this->list_postes as $poste){
+	if($poste['id_poste'] == $employe ['id_poste'])
+	{
+		$poste_name = $poste['nom_poste'];
+	}
+}
+
+echo '
+<td>' . $poste_name . '</td>
+
+<td>
+	<span class="tip" >
+	<a  title="Edit" class="edit" href="';
+	echo $this->url(array('id' => $employe ['id_employe']),'employemodify');
+	echo '">
+	<img src="images/icon/icon_edit.png" >
+	</a>
+	</span>
+	<span class="tip" >
+	<a id="' . $i . '" class="Delete"  name="Band ring" title="Delete">
+	<img src="images/icon/icon_delete.png">
+	</a>
+	</span>
+</td>
+</tr>';
+	$i ++;
+};
+echo '</tbody>
+</table>
+</div>
+</form>
+</div>
+</div><!--tab1-->
+
+</div>
+</div><!-- End UITab -->
+<!-- clear fix -->
+<div class="clear"></div>
+';
+?>

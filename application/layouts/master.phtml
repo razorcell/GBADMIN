@@ -1,0 +1,313 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+
+<!-- Mirrored from zicedemo.com/dashboard.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 08 Apr 2012 14:43:11 GMT -->
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport"
+	content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+
+<title>Administration de Tynex Media</title>
+
+<!-- Link shortcut icon-->
+<link rel="shortcut icon" type="image/ico"
+	href="<?php echo $this->baseUrl('/images/favicon2.html');?>" />
+
+<!-- Link css-->
+	<link rel="stylesheet" type="text/css"
+	href="<?php echo $this->baseUrl('css/buttons.css');?>" />
+<link rel="stylesheet" type="text/css"
+	href="<?php echo $this->baseUrl('css/zice.style.css');?>" />
+<link rel="stylesheet" type="text/css"
+	href="<?php echo $this->baseUrl('css/icon.css');?>" />
+<link rel="stylesheet" type="text/css"
+	href="<?php echo $this->baseUrl('css/ui-custom.css');?>" />
+
+
+
+<link rel="stylesheet" type="text/css"
+	href="<?php echo $this->baseUrl('components/datatables/dataTables.css');?>" />
+<link rel="stylesheet" type="text/css"
+	href="<?php echo $this->baseUrl('components/validationEngine/validationEngine.jquery.css');?>" />
+<link rel="stylesheet" type="text/css"
+	href="<?php echo $this->baseUrl('components/jscrollpane/jscrollpane.css');?>" />
+<link rel="stylesheet" type="text/css"
+	href="<?php echo $this->baseUrl('components/fancybox/jquery.fancybox.css');?>" />
+<link rel="stylesheet" type="text/css"
+	href="<?php echo $this->baseUrl('components/tipsy/tipsy.css');?>" />
+
+<link rel="stylesheet" type="text/css"
+	href="<?php echo $this->baseUrl('components/chosen/chosen.css');?>" />
+<link rel="stylesheet" type="text/css"
+	href="<?php echo $this->baseUrl('components/confirm/jquery.confirm.css');?>" />
+
+
+<link rel="stylesheet" type="text/css"
+	href="<?php echo $this->baseUrl('components/Jcrop/jquery.Jcrop.css');?>" />
+	
+
+<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="components/flot/excanvas.min.js"></script><![endif]-->
+
+<script type="text/javascript"
+	src="<?php echo $this->baseUrl('js/jquery.min.js');?>"></script>
+<script type="text/javascript"
+	src="<?php echo $this->baseUrl('components/ui/jquery.ui.min.js');?>"></script>
+<script type="text/javascript"
+	src="<?php echo $this->baseUrl('components/ui/jquery.autotab.js');?>"></script>
+
+
+<script type="text/javascript"
+	src="<?php echo $this->baseUrl('components/checkboxes/iphone.check.js');?>"></script>
+
+<script type="text/javascript"
+	src="<?php echo $this->baseUrl('components/datatables/dataTables.min.js');?>"></script>
+<script type="text/javascript"
+	src="<?php echo $this->baseUrl('components/datatables/ColVis.js');?>"></script>
+<script type="text/javascript"
+	src="<?php echo $this->baseUrl('components/scrolltop/scrolltopcontrol.js');?>"></script>
+<script type="text/javascript"
+	src="<?php echo $this->baseUrl('components/fancybox/jquery.fancybox.js');?>"></script>
+<script type="text/javascript"
+	src="<?php echo $this->baseUrl('components/jscrollpane/mousewheel.js');?>"></script>
+<script type="text/javascript"
+	src="<?php echo $this->baseUrl('components/jscrollpane/mwheelIntent.js');?>"></script>
+<script type="text/javascript"
+	src="<?php echo $this->baseUrl('components/jscrollpane/jscrollpane.min.js');?>"></script>
+<script type="text/javascript"
+	src="<?php echo $this->baseUrl('components/spinner/ui.spinner.js');?>"></script>
+<script type="text/javascript"
+	src="<?php echo $this->baseUrl('components/tipsy/jquery.tipsy.js');?>"></script>
+
+<script type="text/javascript"
+	src="<?php echo $this->baseUrl('components/chosen/chosen.js');?>"></script>
+<script type="text/javascript"
+	src="<?php echo $this->baseUrl('components/confirm/jquery.confirm.js');?>"></script>
+<script type="text/javascript"
+	src="<?php echo $this->baseUrl('components/validationEngine/jquery.validationEngine.js');?>"></script>
+<script type="text/javascript"
+	src="<?php echo $this->baseUrl('components/validationEngine/jquery.validationEngine-en.js');?>"></script>
+<script type="text/javascript"
+	src="<?php echo $this->baseUrl('components/vticker/jquery.vticker-min.js');?>"></script>
+
+
+
+
+<script type="text/javascript"
+	src="<?php echo $this->baseUrl('components/checkboxes/customInput.jquery.js');?>"></script>
+<script type="text/javascript"
+	src="<?php echo $this->baseUrl('components/effect/jquery-jrumble.js');?>"></script>
+<script type="text/javascript"
+	src="<?php echo $this->baseUrl('components/filestyle/jquery.filestyle.js');?>"></script>
+<script type="text/javascript"
+	src="<?php echo $this->baseUrl('components/placeholder/jquery.placeholder.js');?>"></script>
+<script type="text/javascript"
+	src="<?php echo $this->baseUrl('components/Jcrop/jquery.Jcrop.js');?>"></script>
+<script type="text/javascript"
+	src="<?php echo $this->baseUrl('components/imgTransform/jquery.transform.js');?>"></script>
+<script type="text/javascript"
+	src="<?php echo $this->baseUrl('components/dualListBox/dualListBox.js');?>"></script>
+	<script type="text/javascript"
+	src="<?php echo $this->baseUrl('js/zice.custom.js');?>"></script>
+	<script type="text/javascript"
+	src="<?php echo $this->baseUrl('js/jquery.cookie.js');?>"></script>
+
+
+<!--<script type="text/javascript" src="js/modernizr.js"></script>-->
+
+<script type="text/javascript">
+        /*
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-29497072-1']);
+          _gaq.push(['_trackPageview']);
+        
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+        */
+        </script>
+</head>
+<body class="dashborad">
+	<div id="alertMessage" class="error"></div>
+	<!-- Header -->
+	<div id="header">
+		<div id="account_info">
+			<a href="<?php echo $this->url(array('controller' => 'authentication', 'action' => 'logout' ),'default',true);?>">
+			<div class="logout" title="Se deconnecter">
+				<b>Déconnexion</b> 
+				<img
+					src="<?php echo $this->baseUrl('images/connect.png');?>"
+					name="connect" class="disconnect" alt="Se deconnecter">
+			
+			</div>
+			</a>
+		</div>
+	</div>
+	<!-- End Header -->
+	<div id="shadowhead"></div>
+
+	<div id="left_menu">
+		<ul id="main_menu" class="main_menu">
+
+			<li class="limenu"><a
+				href="<?php echo $this->url(array('controller' => 'index', 'action' => 'index' ),'default',true);?>">
+					<span class="ico gray shadow 	home"></span> <b>Home</b>
+			</a></li>
+			<li class="limenu"><a
+				href="<?php echo $this->url(array('controller' => 'client', 'action' => 'index' ),'default',true);?>">
+					<span class="ico gray shadow user"></span> <b>Clients</b>
+			</a></li>
+			<br> <br>
+
+					<li class="limenu"><a
+						href="<?php echo $this->url(array('controller' => 'commande', 'action' => 'index' ),'default',true);?>">
+							<span class="ico gray shadow list"></span> <b>Commandes</b>
+					</a></li> <br> <br>
+
+							<li class="limenu"><a
+								href="<?php echo $this->url(array('controller' => 'project', 'action' => 'index' ),'default',true);?>">
+									<span class="ico gray stats_lines"></span> <b>Projets</b>
+							</a></li>
+							<li class="limenu"><a
+								href="<?php echo $this->url(array('controller' => 'typeprojet', 'action' => 'index' ),'default',true);?>">
+									<span class="ico gray shadow stop"></span> <b>Types de projet</b>
+							</a></li> <br> <br>
+
+									<li class="limenu"><a
+										href="<?php echo $this->url(array('controller' => 'service', 'action' => 'index' ),'default',true);?>">
+											<span class="ico gray location"></span> <b>Services</b>
+									</a></li>
+									<li class="limenu"><a
+										href="<?php echo $this->url(array('controller' => 'typeservice', 'action' => 'index' ),'default',true);?>">
+											<span class="ico gray shadow coin"></span> <b>Type de
+												Services</b>
+									</a></li>
+									<li class="limenu"><a
+										href="<?php echo $this->url(array('controller' => 'pack', 'action' => 'index' ),'default',true);?>">
+											<span class="ico gray shadow point"></span> <b>Pack</b>
+									</a></li> <br> <br>
+
+											<li class="limenu"><a
+												href="<?php echo $this->url(array('controller' => 'employe', 'action' => 'index' ),'default',true);?>">
+													<span class="ico gray shadow administrator"></span> <b>Employés</b>
+											</a></li>
+											<li class="limenu"><a
+												href="<?php echo $this->url(array('controller' => 'poste', 'action' => 'index' ),'default',true);?>">
+													<span class="ico gray shadow certificate"></span> <b>Postes</b>
+											</a></li>
+											<li class="limenu"><a
+												href="<?php echo $this->url(array('controller' => 'occupation', 'action' => 'index' ),'default',true);?>">
+													<span class="ico gray shadow hammer"></span> <b>Occupations</b>
+											</a></li>
+		</ul>
+	</div>
+	<div id="content">
+		<div class="inner">
+			<div class="topcolumn">
+				<div class="logo"></div>
+				<ul id="shortcut">
+					<li><a
+						href="<?php echo $this->url(array('controller' => 'index', 'action' => 'index' ),'default',true);?>">
+							<img
+							src="<?php echo $this->baseUrl('images/icon/shortcut/home.png');?>"
+							alt="home" /><strong>Acceuil</strong>
+					</a></li>
+				</ul>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+
+			<!-- full width -->
+			<div class="widget">
+				<div class="header">
+					<span><span class="<?php echo $this->general_icon;?>"> </span> 
+						<?php
+						$ctrl = $this->ctrl;
+						$lien = $this->url ( array ('controller' => $ctrl, 'action' => 'index' ), 'default', true );
+						$ctrl = ucfirst ( $ctrl );
+						if ($this->action == 'index') {
+							echo '<a href="' . $lien . ' ">' . $ctrl . '</a>';
+						
+						} else {
+							echo '<a href="' . $lien . ' ">' . $ctrl . '</a> &nbsp;>&nbsp;  ';
+							echo $this->title;
+						}
+						
+						?>
+					</span>
+				</div>
+				<div class="content">
+
+
+					<!--<div class="wrapper2">
+		<div class="content-wrapper2">
+			<div class="search-button2">
+				<span>search</span>
+			</div>
+			<div class="search-box2">
+				<input type="text" placeholder="Type your keyword..." />
+				<img src="images/close.png" />
+			</div>
+		</div>
+	</div>-->
+
+					<!-- clear fix -->
+					<div class="clear"></div>
+
+
+
+
+
+					<!-- title box -->
+					<div class="boxtitle min">
+                         
+                         <?php echo $this->layout()->content; ?>
+                         
+                        </div>
+
+					<!-- Half width column-->
+					<div class="widgets">
+						<div class="oneTwo">
+							<br />
+						</div>
+					</div>
+					<!-- End Half width column -->
+
+					<!-- clear fix -->
+					<div class="clear"></div>
+
+				</div>
+				<!-- End content -->
+			</div>
+			<!-- End full width -->
+
+			<!-- full width -->
+			<!-- End full width -->
+
+
+			<!-- Two column window column_left -->
+			<!-- End column_left -->
+
+
+			<!-- Two column window column_right -->
+			<!-- End column_right -->
+
+			<!-- clear fix -->
+			<div class="clear"></div>
+
+
+		</div>
+		<!--// End inner -->
+	</div>
+	<!--// End content -->
+</body>
+
+<!-- Mirrored from zicedemo.com/dashboard.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 08 Apr 2012 14:46:18 GMT -->
+</html>

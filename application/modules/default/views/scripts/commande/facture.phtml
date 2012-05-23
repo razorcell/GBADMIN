@@ -1,0 +1,208 @@
+
+
+<link rel='stylesheet' type='text/css'
+	href='<?php echo $this->baseUrl('css/style_facture.css')?>' />
+<link rel='stylesheet' type='text/css'
+	href='<?php echo $this->baseUrl('css/print.css')?>' media="print" />
+<script type='text/javascript'
+	src='<?php echo $this->baseUrl('js/jquery.min.js')?>'></script>
+<script type='text/javascript'
+	src='<?php echo $this->baseUrl('js/example.js')?>'></script>
+
+<?php 
+
+echo '
+<div id="content">
+
+	<div id="page-wrap">
+		<div id="identity">
+			<div id="logo">
+
+				<div id="logoctr"></div>
+				<div id="logohelp">
+					<input id="imageloc" type="text" size="50" value="" /><br /> (max
+					width: 540px, max height: 100px)
+				</div>
+				<img id="image" src="'.$this->baseUrl('images/logo.png').'"
+					alt="logo" />
+			</div>
+		</div>
+
+		<div style="clear: both"></div>
+		<table id="meta">
+			<tr>
+				<td class="meta-head"><a
+					href="'.$this->url(array('controller' => 'commande', 'action' => 'index' ),'default',true).'">Commande N&deg;</a></td>
+				<td><textarea>'.$this->commande->id_commande.'</textarea></td>
+			</tr>
+			<tr>
+				<td class="meta-head"></td>
+				<td><textarea id="date">'.Zend_Date::now()->get(Zend_Date::DATE_FULL).'</textarea></td>
+			</tr>
+		</table>
+		<div id="customer">
+			<h3>
+				<a
+					href="'.$this->url(array('id' => $this->client->id_client),'clientmodify').'">Client
+				</a> : ';
+//print the client name
+				if($this->client->type == 'Entreprise'){
+					echo $this->client->societe;	
+				}else{
+					echo $this->client->nom.' '.$this->client->prenom;
+				}
+				echo '</br> 
+				Telephone : ';
+				//print telephone
+				if($this->client->type == 'Entreprise'){
+					echo $this->client->tel_societe;
+				}else{
+					echo $this->client->tel;
+				} 
+				echo ' </br> 
+				Adresse : '.$this->client->adresse.' 
+				</br> 
+				Sujet : '.$this->commande->libelle_commande.'
+			</h3>
+		</div>
+
+		<table id="items">
+
+			<tr>
+				<th>Type</th>
+				<th>Description</th>
+				<th>Prix Unitaire</th>
+				<th>Quantit&eacute;</th>
+				<th>Prix</th>
+
+			</tr>
+			<!--  Projets -->
+			<tr class="tr_titre">
+				<td colspan="5"><div class="delete-wpr">
+						Projets
+					</div></td>
+
+
+			</tr>';
+				foreach($this->list_projets as $projet){
+					echo ' <tr class="item-row projet">
+				<td class="item-name"><div class="delete-wpr">';
+					$type_projet_string = NULL;
+					foreach ($this->list_types_projets as $type_projet){
+						if($type_projet['id_type_projet'] == $projet['id_type_projet']){
+							$type_projet_string = $type_projet['nom_type_projet'];
+						}
+					}
+						echo '<textarea>'.$type_projet_string.'</textarea>
+						<a class="delete" href="javascript:;" title="Remove row">X</a>
+					</div></td>
+				<td class="description"><textarea>'.$projet['description'].'
+				Periode : '.$projet['date_debut'].' / '.$projet['date_fin'].'</textarea></td>
+				<td><textarea class="cost">'.$projet['prix'].'</textarea></td>
+				<td><textarea class="qty">1</textarea></td>
+				<td><span class="price"></span></td>
+
+			</tr>';
+						//liste des ervices
+				}
+			
+
+			echo '<tr id="hiderow">
+				<td colspan="5"><a id="addrow-projet" href="javascript:;"
+					title="Add a row">Ajouter un projet</a></td>
+			</tr>
+
+			<!--  Services -->
+
+			<tr class="tr_titre">
+				<td colspan="5"><div class="delete-wpr">
+						Service
+					</div></td>
+			</tr>';
+			foreach($this->list_services as $service){
+					echo ' <tr class="item-row service">
+				<td class="item-name"><div class="delete-wpr">';
+					//get type service name
+					$type_service_string = NULL;
+					foreach ($this->list_types_services as $type_service){
+						if($type_service['id_type_service'] == $service['id_type_service']){
+							$type_service_string = $type_service['libelle_type_service'];
+						}
+					}
+					//get pack name
+					$pack_string = NULL;
+					foreach ($this->list_packs as $pack){
+						if($pack['id_pack'] == $service['id_pack']){
+							$pack_string = $pack['libelle_pack'];
+						}
+					}
+						echo '<textarea>'.$type_service_string.' ( '.$pack_string.' )'.'</textarea>
+						<a class="delete" href="javascript:;" title="Remove row">X</a>
+					</div></td>
+				<td class="description"><textarea>'.$service['description'].'<br />Periode : '.$service['date_debut'].' / '.$service['date_fin'].'</textarea></td>
+				<td><textarea class="cost">'.$service['prix'].'</textarea></td>
+				<td><textarea class="qty">1</textarea></td>
+				<td><span class="price"></span></td>
+
+			</tr>';
+				}
+echo '
+			<tr id="hiderow">
+				<td colspan="5"><a id="addrow-service" href="javascript:;"
+					title="Add a row">Ajouter un service</a></td>
+			</tr>
+			<tr>
+
+				<td colspan="2" class="blank"></td>
+				<td colspan="2" class="total-line" align="left">Total HT :</td>
+				<td class="total-value"><div id="total" align="center"></div></td>
+			</tr>
+			<tr>
+				<td colspan="2" class="blank"></td>
+				<td colspan="2" class="total-line">TVA 20 % :</td>
+				<td class="total-value"><div id="tva" align="center"></div></td>
+			</tr>
+			<tr>
+				<td colspan="2" class="blank"></td>
+				<td colspan="2" class="total-line balance">Total TTC :</td>
+				<td class="total-value balance"><div class="avec-tva" align="center"></div></td>
+			</tr>
+
+		</table>
+		<div id="customer">
+			<div id=" direction">
+				<br>
+
+				<h4>
+					<u>Arr�te la presente facture � la somme de :</u></br>
+					<textarea rows=1 cols=100></textarea>
+				</h4>
+			</div>
+			<div id="direction">
+				<br>
+				<h3 id="customer-title_direction" align="right">
+					<u>La Direction G�n�rale</u>
+				</h3>
+				<br> <br> <br> <br> <br>
+			</div>
+		</div>
+
+		<div id="terms">
+			<div id="information">
+
+				<textarea id="address">Tynex Media, Imm. Oasis, 
+B1 Bureau N� 128  Amsernat 80 00 0 Agadir
+T�l: +212 (0)5 28 29 25 95 Mobile: +212 (0)6 41 32 64 07
+Email: contact@tynexmedia.com
+Agadir - Maroc</textarea>
+			</div>
+		</div>
+
+	</div>';
+	?>
+	
+<script type='text/javascript'>
+
+
+</script>
+	

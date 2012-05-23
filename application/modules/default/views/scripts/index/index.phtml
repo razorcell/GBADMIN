@@ -1,0 +1,119 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css"
+	href="<?php echo $this->baseUrl('style.css');?>" />
+</head>
+<?php 
+
+echo '
+<div class="right_content">
+	<h2></h2>
+	<div class="widgets">
+		
+		
+	<div class="widgets">
+		<div class="oneTwo">
+			<div class="widget">
+				<div class="header">
+					<span><span class="ico color stats_pie"></span>Statistiques</span>
+				</div>
+				<div class="content">
+					<br class="clear" />
+
+					<!-- Third / Half column-->
+					<div class="widgets">
+						<div class="oneThree">
+							<div class="shoutcutBox">
+								<span class="ico color hourglass"></span> <strong>'.$this->services_actifs->totale.'</strong>
+								<em>Services actifs</em>
+							</div>
+							
+							<div class="shoutcutBox">
+							<span class="ico color cross"></span> <strong>'.$this->services_interrompus->totale.'</strong>
+								<em>Services Interrompus</em>
+							</div>
+							
+							<div class="breaks">
+								<span></span>
+							</div>
+
+							<div class="shoutcutBox">
+								<span class="ico color hourglass"></span> <strong>'.$this->projets_actifs->totale.'</strong>
+								<em>Projets Actifs</em>
+							</div>
+							<div class="shoutcutBox">
+								<span class="ico color brush"></span> <strong>'.$this->projets_en_cour.'</strong> <em>
+									Projets En Cours</em>
+							</div>
+							<div class="shoutcutBox">
+							<span class="ico color cross"></span> <strong>'.$this->projets_interrompus->totale.'</strong>
+								<em>Projets Interrompus</em>
+							</div>
+							<div class="shoutcutBox">
+								<span class="ico color checkmark2"></span> <strong>'.$this->projets_fini.'</strong> <em>
+									Projets Finis</em>
+							</div>
+		
+							
+							<!-- // breaks -->
+							<div class="breaks">
+								<span></span>
+							</div>
+							
+							
+							<div class="shoutcutBox">
+								<span class="ico color group"></span> <strong>'.$this->employes->totale.'</strong> <em>Total
+									Employés</em>
+							</div>
+							
+							<br />
+							<br />
+						</div>
+
+
+					</div>
+					<!-- End Third / Half column-->
+
+					<!-- clear fix -->
+					<div class="clear"></div>
+
+				</div>
+				<!-- End content -->
+			</div>
+			<!-- End full width -->
+
+		</div>
+		<div class="oneTwo">
+			<div class="widget">
+				<div class="header">
+					<span><span class="ico color mail"></span>Alertes</span>
+				</div>
+				<div class="content">
+				<div class="alertMessage SE">'.$this->projets_non_paye->totale.' PROJETS NON PAYE</div>
+				<div class="alertMessage SE">'.$this->services_non_paye->totale.' SERVICES NON PAYE</div>
+';
+//print list of expired services
+foreach($this->services_expired as $expired_service){//tab des id
+	foreach($this->services__types as $service_type){//tab de toutes les info
+		if($expired_service['id_service'] == $service_type['id_service']){
+			//on doit afficher ce service
+			$diff = $expired_service['diff'];
+			$months = floor(((($diff/60)/60)/24)/30);
+			$days = floor(((($diff-(2592000*$months))/60)/60)/24);
+			echo '<div class="alertMessage warning SE"><a  title="Edit" class="edit" href="'.$this->url ( array ('id' => $expired_service ['id_service'] ), 'servicemodify' )
+			.'">['.$service_type['libelle_type_service'].'] N° '.$service_type['id_service'].' EXPIRATION dans '.$months.' mois et '.$days.' jours</a>
+			</div>';
+			
+		}
+	}
+}
+echo '		
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+</html>
+';
+?>
