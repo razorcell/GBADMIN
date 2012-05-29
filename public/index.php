@@ -19,14 +19,10 @@ if (file_exists($filename)) {
 	if(filesize($filename) > 30000){
 		unlink($filename);
 	}
-	
 }
-
-
 
 /** Zend_Application */
 require_once 'Zend/Application.php';
-
 
 // Create application, bootstrap, and run
 $application = new Zend_Application(
@@ -35,5 +31,3 @@ $application = new Zend_Application(
 );
 $application->bootstrap()
             ->run();
-
-

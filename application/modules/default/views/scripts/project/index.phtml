@@ -30,6 +30,7 @@ echo '
 <th align="left">Id</th>
 <th>Date debut</th>
 <th>Date fin</th>
+<th>Priorité</th>
 <th>Status</th>
 <th>Paiement</th>
 <th>Type de projet</th>
@@ -44,7 +45,21 @@ foreach ( $this->list_projets as $projet ) {
 	<td  class="id_projet" align ="left">' . $projet ['id_projet'] . '</td>';
 	
 		echo '<td class="date_debut">' . $projet ['date_debut'] . '</td>
-		<td class="date_fin">' . $projet ['date_fin'] . '</td>
+		<td class="date_fin">' . $projet ['date_fin'] . '</td>';
+		switch($projet['priorite']){
+			case 'p1':
+				echo '<td bgcolor="#BF231B" class="priorite">P1</td>'; 
+				break;
+			case 'p2':
+					echo '<td bgcolor="#F1A50A" class="priorite">P2</td>';
+					break;
+			case 'p3':
+						echo '<td bgcolor="#8FB911" class="priorite">P3</td>';
+						break;
+				
+		}
+		
+		echo '
 		<td class="status">' . $projet ['status'] . '</td>
 		<td class="paiement">' . $projet ['paye'] . '</td>';
 		$type_projet_string = NULL;

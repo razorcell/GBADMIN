@@ -1,3 +1,4 @@
+
 <script type="text/javascript"
 	src="<?php echo $this->baseUrl('js/projet.js');?>"></script>
 <script type="text/javascript"
@@ -11,7 +12,26 @@ $(document).ready(function(){
 	$('a.progression').attr('value','0');
 	$('div.slider-handle').css({'top':'188px'});
 	$('div.cu-mid').css({'height':'0px'});
-
+	//drag and drop
+	for(var i=1;i<4;i++){
+		$('.p'+i).draggable({
+			cursor: 'move',
+			containment : 'parent',
+			helper : 'clone',
+			revert: true,
+			axis: "x"
+		});
+	}
+	$('.current_priority').droppable({
+			drop : change_priority
+	});
+	function change_priority(event, ui){
+			var choix = ui.draggable;
+			var class_choix = choix.attr('p');
+			var new_src = '/images/'+class_choix+'.png';
+			$(this).attr('src',new_src);
+			$('.priority_hidden').attr('value',class_choix);
+		};
 });
 //-->
 </script>
@@ -101,7 +121,21 @@ echo'	</select>
          <div>
              <input type="text" id="sStep" value="1000.00" name="prix" class="prix_projet"/>
            </div>
-     </div>
+     </div>';
+//add drag and drop
+echo '
+	<div class="section">
+     <label>Priorité<small>Donner une priorité pour ce projet</small></label>
+         <div>
+         <img class="current_priority" src="'.$this->baseUrl('images/p3.png').'" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         <img class="p1" p="p3" src="'.$this->baseUrl('images/p3.png').'" />
+         <img class="p2" p="p2" src="'.$this->baseUrl('images/p2.png').'" />
+         <img class="p3" p="p1" src="'.$this->baseUrl('images/p1.png').'" />
+         <input value="p3" type="hidden" id="priority_hidden" name="priority_hidden" class="priority_hidden" />
+           </div>
+   </div>';  
+echo '     
 	<div class="section">
 		<label>Progression<small>Vous pouvez définir une progression pour votre projet</small></label>
 		<div style="font-size:2em ; margin :10 10 20 10"><a class="uibutton normal progression">23%</a></div>

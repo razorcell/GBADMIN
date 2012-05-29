@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le : Mer 23 Mai 2012 à 22:44
+-- Généré le : Mar 29 Mai 2012 à 03:23
 -- Version du serveur: 5.5.16
 -- Version de PHP: 5.3.8
 
@@ -163,7 +163,14 @@ INSERT INTO `intervention` (`id_employe`, `id_projet`) VALUES
 (3, 43),
 (1, 43),
 (1, 44),
-(2, 44);
+(2, 44),
+(3, 45),
+(5, 45),
+(11, 45),
+(3, 46),
+(4, 46),
+(1, 46),
+(12, 46);
 
 -- --------------------------------------------------------
 
@@ -302,24 +309,27 @@ CREATE TABLE IF NOT EXISTS `projet` (
   `prix` float NOT NULL,
   `progression` int(11) NOT NULL,
   `status` enum('Actif','Interrompu') NOT NULL,
-  `date_debut` date NOT NULL,
-  `date_fin` date NOT NULL,
+  `date_debut` text NOT NULL,
+  `date_fin` text NOT NULL,
   `id_type_projet` int(11) NOT NULL,
   `paye` enum('Non','Oui') NOT NULL,
   `id_commande` int(11) NOT NULL,
+  `priorite` enum('p1','p2','p3') NOT NULL DEFAULT 'p3',
   PRIMARY KEY (`id_projet`),
   KEY `id_type_projet` (`id_type_projet`),
   KEY `id_commande` (`id_commande`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=45 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=47 ;
 
 --
 -- Contenu de la table `projet`
 --
 
-INSERT INTO `projet` (`id_projet`, `description`, `prix`, `progression`, `status`, `date_debut`, `date_fin`, `id_type_projet`, `paye`, `id_commande`) VALUES
-(15, 'Hotel farah demander pas M.Skali Haut prioritÃ©', 12000, 35, 'Actif', '2002-05-20', '2021-05-20', 3, 'Non', 1),
-(43, 'Fort recommendation sur le style(couleur, banniÃ©re...), contrainte de couleur : bleu', 5000, 30, 'Actif', '2001-05-20', '2031-05-20', 4, 'Oui', 18),
-(44, 'some bla bla bla', 5900, 56, 'Actif', '2001-05-20', '2024-05-20', 3, 'Non', 1);
+INSERT INTO `projet` (`id_projet`, `description`, `prix`, `progression`, `status`, `date_debut`, `date_fin`, `id_type_projet`, `paye`, `id_commande`, `priorite`) VALUES
+(15, 'Hotel farah demander pas M.Skali Haut prioritÃ©', 12000, 35, 'Actif', '01.05.2012', '31.05.2012', 3, 'Non', 1, 'p1'),
+(43, 'Fort recommendation sur le style(couleur, banniÃ©re...), contrainte de couleur : bleu', 5000, 30, 'Actif', '01.05.2012', '16.08.2012', 4, 'Oui', 18, 'p3'),
+(44, 'some bla bla bla', 5900, 56, 'Actif', '13.06.2012', '27.09.2012', 3, 'Non', 1, 'p3'),
+(45, 'some description', 6500, 29, 'Actif', '01.05.2012', '24.05.2012', 4, 'Non', 19, 'p3'),
+(46, 'some description', 6500, 56, 'Actif', '10.05.2012', '08.06.2012', 4, 'Non', 19, 'p2');
 
 -- --------------------------------------------------------
 

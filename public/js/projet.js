@@ -50,6 +50,7 @@ $(document)
 							}
 						}
 					});
+					
 					$('.f_p_add').submit(function(e) {
 						e.preventDefault();
 					});

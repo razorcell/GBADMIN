@@ -77,7 +77,8 @@ class ProjectController extends Zend_Controller_Action {
 		$data_from_user = Zend_Json::decode($request_body);
 		//Activer cette ligne pour voir le resultat du decodage
 		//$this->logger->info(Zend_Debug::dump($data_from_user));
-
+		
+		
 		$commande = $data_from_user ['commande'];
 		$date_debut = $data_from_user ['date_debut'];
 		$date_fin = $data_from_user ['date_fin'];
@@ -87,6 +88,7 @@ class ProjectController extends Zend_Controller_Action {
 		$prix = $data_from_user ['prix'];
 		$status = $data_from_user ['status_hidden'];
 		$type_projet_string = $data_from_user ['type_projet'];//jusqu'ici il ne reste que les employes
+		$priority = $data_from_user['priority_hidden'];
 		
 		
 		//PHASE D INSERTION DE DU PROJET DANS LA TABLE 'projet'
@@ -111,6 +113,7 @@ class ProjectController extends Zend_Controller_Action {
 														 'date_fin' => $date_fin,
 														'id_type_projet' => $type_projet_id,
 														 'paye' => $paye,
+														'priorite' => $priority,
 														 'id_commande' => $commande );
 		$this->logger->info(html_entity_decode(Zend_Debug::dump($project_to_save,$label = null,$echo = false), ENT_COMPAT, "utf-8"));
 		try {
@@ -217,6 +220,7 @@ class ProjectController extends Zend_Controller_Action {
 		$prix = $data_from_user ['prix'];
 		$status = $data_from_user ['status_hidden'];
 		$type_projet_string = $data_from_user ['type_projet'];//jusqu'ici il ne reste que les employes
+		$priority = $data_from_user['priority_hidden'];
 		
 		
 		//PHASE D INSERTION DE DU PROJET DANS LA TABLE 'projet'
@@ -241,6 +245,7 @@ class ProjectController extends Zend_Controller_Action {
 														 'date_fin' => $date_fin,
 														'id_type_projet' => $type_projet_id,
 														 'paye' => $paye,
+														'priorite' => $priority,
 														 'id_commande' => $commande );
 		$this->logger->info(html_entity_decode(Zend_Debug::dump($project_to_save,$label = null,$echo = false), ENT_COMPAT, "utf-8"));
 		try {
